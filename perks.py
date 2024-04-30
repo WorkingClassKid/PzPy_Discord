@@ -136,7 +136,9 @@ class PerkHandler(commands.Cog):
         elif type == "SRJ START READING":
             if timestamp > self.lastUpdateTimestamp:
                 self.bot.log.info(f"{user.name} Skills Recovery Journal")
-                return f":book: {log_char_string} (**{user.name}**) fait un peu de lecture......."
+                return embed.srj(
+                        timestamp, user.name, log_char_string
+                    )
         else:
             # Must be a list of perks following a login/player creation
             for name, value in re.findall(r"(\w+)=(\d+)", type):

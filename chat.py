@@ -4,7 +4,7 @@ from discord.ext import tasks, commands
 from file_read_backwards import FileReadBackwards
 import glob
 import re
-
+import os
 import embed
 
 
@@ -44,7 +44,6 @@ class ChatHandler(commands.Cog):
                     else:
                         break
                 self.lastUpdateTimestamp = newTimestamp
-
     async def handleLog(self, timestamp: datetime, message: str) -> Embed | None:
         """Parse the given line from the logfile and mirror chat message in
         discord if necessary"""
@@ -69,12 +68,23 @@ class ChatHandler(commands.Cog):
 
             name = match.group(1)
             avatar_url = None
+            EmbedChat = os.getenv("EMBED_CHAT")
             for member in self.bot.get_all_members():
                 if match.group(1) in member.name:
                     avatar_url = member.display_avatar
-
-            await self.webhook.send(
-                embed=embed.chat_message(timestamp, message),
-                username=name,
-                avatar_url=avatar_url,
-            )
+            
+            if EmbedChat == "yes":
+                await self.webhook.send(
+                    embed=embed.chat_message(timestamp, match.group(2)),
+                    username=name,
+                    avatar_url=avatar_url,
+                )
+                
+            else:
+                await self.webhook.send(
+                    match.group(2),
+                    username=name, 
+                    avatar_url=avatar_url
+                )
+                
+           

@@ -12,6 +12,14 @@ You are welcome to [log](https://github.com/buttsbucket/zomboi_bot/issues) any i
 - Presence shows number of players currently online
 - View and change server options
 - Request a map showing a players location
+- [Skills Recovery Journal mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2503622437) support
+- Option to hide / display the timestamp
+- Option to show the chat with discord embed or not
+
+## TO DO
+- Multilingual (currently only available in french... English available soon)
+- Make bot commands multilingual. 
+- Update the MapHandler to support modded map (if possible)
 
 ## Commands (prefix: `!`):
 ```

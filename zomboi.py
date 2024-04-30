@@ -12,8 +12,22 @@ from perks import PerkHandler
 from users import UserHandler
 from admin import AdminLogHandler
 from rcon_adapter import RCONAdapter
+import gettext
+
+# Set the translation directory
+appname = 'zomboid_bot'
+localedir = './locales'
+
+# Set up Gettext
+bot_translate = gettext.translation(appname, localedir, fallback=True, languages=['fr'])
+bot_translate.install()
+
 
 load_dotenv(override=True)
+
+logPath = os.getenv("LOGS_PATH")
+
+
 
 # Verify the log path
 logPath = os.getenv("LOGS_PATH")
