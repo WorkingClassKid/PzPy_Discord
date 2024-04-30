@@ -6,13 +6,12 @@ import gettext
 
 load_dotenv()
 
+#setup gettext
 appname = 'zomboid_bot'
 localedir = os.getenv("LANGUAGE_DIR")
-
-# Set up Gettext
-bot_translate = gettext.translation(appname, localedir, fallback=False, languages=['fr'])
-bot_translate.install()
-
+language= os.getenv("BOT_LANGUAGE")
+bot_translate = gettext.translation(appname, localedir, fallback=False, languages=[language])
+bot_translate.install(names=['ngettext'])
 
 # Message formatting and coloring for public-facing logs
 

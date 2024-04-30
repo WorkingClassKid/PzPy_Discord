@@ -21,7 +21,8 @@ load_dotenv()
 # Set up Gettext
 appname = 'zomboid_bot'
 localedir = os.getenv("LANGUAGE_DIR")
-bot_translate = gettext.translation(appname, localedir, fallback=False, languages=['fr'])
+language= os.getenv("BOT_LANGUAGE")
+bot_translate = gettext.translation(appname, localedir, fallback=False, languages=[language])
 bot_translate.install(names=['ngettext'])
 
 DISCORD_MAX_CHAR = 2000
@@ -121,15 +122,19 @@ class UserHandler(commands.Cog):
         # Also update the bot activity here
         onlineCount = len([user for user in self.users if self.users[user].online])
         if onlineCount != self.onlineCount:
-            playerStringTranslate = ngettext("ONE_PLAYER", "MANY_PLAYERS", onlineCount) % {'num': onlineCount}
-            playerString = _("NO_BODY") if onlineCount == 0 else playerStringTranslate
+            if onlineCount == 0:
+                playerString = _("NO_BODY")
+            else:
+                playerString = ngettext("ONE_PLAYER", "MANY_PLAYERS", onlineCount) % {'num': onlineCount}
+            
             PlayWith = _("PLAY_PZ_WITH")
             # have to abbreviate or it gets truncated
             await self.bot.change_presence(
                 activity=discord.Game( f"{PlayWith} {playerString}")
             )
             self.onlineCount = onlineCount
-
+            
+            
     def loadHistory(self) -> None:
         """Go through all log files and load the info"""
         self.bot.log.info("Loading user history...")

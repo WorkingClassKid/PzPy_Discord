@@ -14,14 +14,12 @@ from admin import AdminLogHandler
 from rcon_adapter import RCONAdapter
 import gettext
 
-# Set the translation directory
+#setup gettext
 appname = 'zomboid_bot'
-localedir = './locales'
-
-# Set up Gettext
-bot_translate = gettext.translation(appname, localedir, fallback=True, languages=['fr'])
-bot_translate.install()
-
+localedir = os.getenv("LANGUAGE_DIR")
+language= os.getenv("BOT_LANGUAGE")
+bot_translate = gettext.translation(appname, localedir, fallback=False, languages=[language])
+bot_translate.install(names=['ngettext'])
 
 load_dotenv(override=True)
 
