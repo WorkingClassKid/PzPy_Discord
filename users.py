@@ -13,6 +13,17 @@ import sqlite3
 
 import embed
 
+import gettext
+
+from dotenv import load_dotenv
+load_dotenv()
+
+# Set up Gettext
+appname = 'zomboid_bot'
+localedir = os.getenv("LANGUAGE_DIR")
+bot_translate = gettext.translation(appname, localedir, fallback=False, languages=['fr'])
+bot_translate.install(names=['ngettext'])
+
 DISCORD_MAX_CHAR = 2000
 
 
@@ -110,10 +121,12 @@ class UserHandler(commands.Cog):
         # Also update the bot activity here
         onlineCount = len([user for user in self.users if self.users[user].online])
         if onlineCount != self.onlineCount:
-            playerString = "nobody" if onlineCount == 0 else f"{onlineCount} survivors"
+            playerStringTranslate = ngettext("ONE_PLAYER", "MANY_PLAYERS", onlineCount) % {'num': onlineCount}
+            playerString = _("NO_BODY") if onlineCount == 0 else playerStringTranslate
+            PlayWith = _("PLAY_PZ_WITH")
             # have to abbreviate or it gets truncated
             await self.bot.change_presence(
-                activity=discord.Game(f"PZ with {playerString}")
+                activity=discord.Game( f"{PlayWith} {playerString}")
             )
             self.onlineCount = onlineCount
 
