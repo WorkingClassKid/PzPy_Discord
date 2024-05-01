@@ -1,4 +1,4 @@
-# The main file for PzPy bot. Sets up and runs the discord client
+# The main file for zomboi bot. Sets up and runs the discord client
 
 from chat import ChatHandler
 import discord
@@ -48,17 +48,17 @@ zomboi = commands.bot.Bot("!", intents=intents)
 logFormat = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s: %(message)s")
 discordLogger = logging.getLogger("discord")
 discordLogger.setLevel(logging.DEBUG)
-handler = logging.FileHandler(filename="logs/discord.log", encoding="utf-8", mode="w")
+handler = logging.FileHandler(filename="discord.log", encoding="utf-8", mode="w")
 handler.setFormatter(logFormat)
 discordLogger.addHandler(handler)
 
 # set up our logging
-zomboi.log = logging.getLogger("PzPy")
+zomboi.log = logging.getLogger("zomboi")
 handler = logging.StreamHandler()
 handler.setFormatter(logFormat)
 handler.setLevel(logging.INFO)
 zomboi.log.addHandler(handler)
-handler = logging.FileHandler(filename="logs/console.log")
+handler = logging.FileHandler(filename="zomboi.log")
 handler.setFormatter(logFormat)
 handler.setLevel(logging.DEBUG)
 zomboi.log.addHandler(handler)
