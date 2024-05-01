@@ -48,25 +48,7 @@ Sample configuration is provided in a file named `sample.env`. You can copy this
 This bot works by monitoring the log files produced by the game, so must be run on the same machine as the server/host
 
 To run:
-`python zomboi.py`
+`python PzPy.py`
 
 It may be a good idea to run as a service, especially on a dedicated server
 
-## Docker
-
-You will have to mount the maps and logs directories of the Project Zomboid
-server into the zomboi container at the expected paths.
-
-To build and run zomboi in a Docker container:
-
-```
-docker build -t zomboi .
-docker run -d -v /path/to/maps:~/steam/steamapps/common/ProjectZomboid/media/maps -v /path/to/logs:~/Zomboid/Logs -e DISCORD_TOKEN=my_bot_token -e CHANNEL=channel_name_or_id -e RCON_PASSWORD=my_rcon_password zomboi
-```
-
-Or using docker-compose:
-
-```
-docker-compose build
-docker-compose up -d
-```
