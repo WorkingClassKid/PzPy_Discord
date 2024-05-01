@@ -75,7 +75,7 @@ class ChatHandler(commands.Cog):
             
             if EmbedChat == "yes":
                 await self.webhook.send(
-                    embed=embed.chat_message(timestamp, match.group(2)),
+                    embed=modules.embed.chat_message(timestamp, match.group(2)),
                     username=name,
                     avatar_url=avatar_url,
                 )

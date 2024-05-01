@@ -99,7 +99,7 @@ class PerkHandler(commands.Cog):
             if timestamp > self.lastUpdateTimestamp:
                 self.bot.log.info(f"{user.name} died")
                 if self.notifyDeath:
-                    return embed.death(
+                    return modules.embed.death(
                         timestamp, user.name, log_char_string, user.hoursAlive
                     )
 
@@ -117,7 +117,7 @@ class PerkHandler(commands.Cog):
                 user.online = True
                 self.bot.log.info(f"{user.name} new character")
                 if self.notifyCreateChar:
-                    return embed.join(timestamp, user.name, log_char_string)
+                    return modules.embed.join(timestamp, user.name, log_char_string)
 
         elif type == "Level Changed":
             match = re.search(r"\[(\w+)\]\[(\d+)\]", message)
@@ -127,14 +127,14 @@ class PerkHandler(commands.Cog):
             if timestamp > self.lastUpdateTimestamp:
                 self.bot.log.info(f"{user.name} {perk} changed to {level}")
                 if self.notifyPerk:
-                    return embed.perk(
+                    return modules.embed.perk(
                         timestamp, user.name, log_char_string, perk, level
                     )
      # Skill Recovery Journal FIX
         elif type == "SRJ START READING":
             if timestamp > self.lastUpdateTimestamp:
                 self.bot.log.info(f"{user.name} Skills Recovery Journal")
-                return embed.srj(
+                return modules.embed.srj(
                         timestamp, user.name, log_char_string
                     )
         else:
