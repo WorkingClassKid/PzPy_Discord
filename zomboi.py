@@ -1,6 +1,6 @@
-# The main file for zomboi bot. Sets up and runs the discord client
 
-from chat import ChatHandler
+# The main file for PzPy bot. Sets up and runs the discord client
+from modules.chat import ChatHandler
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -8,10 +8,10 @@ import logging
 from maps import MapHandler
 import os
 from pathlib import Path
-from perks import PerkHandler
-from users import UserHandler
-from admin import AdminLogHandler
-from rcon_adapter import RCONAdapter
+from modules.perks import PerkHandler
+from modules.users import UserHandler
+from modules.admin import AdminLogHandler
+from modules.rcon_adapter import RCONAdapter
 import gettext
 
 #setup gettext
