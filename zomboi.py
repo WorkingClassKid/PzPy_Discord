@@ -5,13 +5,14 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import logging
-from maps import MapHandler
+from modules.maps import MapHandler
 import os
 from pathlib import Path
 from modules.perks import PerkHandler
 from modules.users import UserHandler
 from modules.admin import AdminLogHandler
 from modules.rcon_adapter import RCONAdapter
+import modules.embed
 import gettext
 
 #setup gettext

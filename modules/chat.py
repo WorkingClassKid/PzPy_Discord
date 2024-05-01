@@ -5,7 +5,7 @@ from file_read_backwards import FileReadBackwards
 import glob
 import re
 import os
-import embed
+import modules.embed
 
 
 class ChatHandler(commands.Cog):

@@ -3,7 +3,6 @@ from datetime import datetime
 from dotenv import load_dotenv
 import os
 import gettext
-
 load_dotenv()
 
 #setup gettext

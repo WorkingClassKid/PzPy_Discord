@@ -5,9 +5,7 @@ from file_read_backwards import FileReadBackwards
 import glob
 import os
 import re
-
-import embed
-
+import modules.embed
 
 class PerkHandler(commands.Cog):
     """Class which handles the Perk log files"""
@@ -110,7 +108,7 @@ class PerkHandler(commands.Cog):
                 user.online = True
                 self.bot.log.info(f"{user.name} login")
                 if self.notifyJoin:
-                    return embed.resume(
+                    return modules.embed.resume(
                         timestamp, user.name, log_char_string, user.hoursAlive
                     )
 

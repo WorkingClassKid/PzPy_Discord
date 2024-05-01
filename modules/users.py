@@ -10,8 +10,8 @@ from tabulate import tabulate
 from typing import List
 from pathlib import Path
 import sqlite3
+import modules.embed
 
-import embed
 
 import gettext
 
@@ -161,7 +161,7 @@ class UserHandler(commands.Cog):
             if timestamp > self.lastUpdateTimestamp:
                 self.bot.log.info(f"{user.name} disconnected")
                 if self.notifyDisconnect:
-                    return embed.leave(timestamp, user.name)
+                    return modules.embed.leave(timestamp, user.name)
 
         elif "fully connected" in message:
             matches = re.search(r"\"(.*)\".*\((\d+),(\d+)", message)
