@@ -48,7 +48,7 @@ Sample configuration is provided in a file named `sample.env`. You can copy this
 This bot works by monitoring the log files produced by the game, so must be run on the same machine as the server/host
 
 To run:
-`python zomboi.py`
+`python PzPy.py`
 
 It may be a good idea to run as a service, especially on a dedicated server
 
