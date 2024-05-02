@@ -13,8 +13,6 @@ bot_translate = gettext.translation(appname, localedir, fallback=False, language
 bot_translate.install(names=['ngettext'])
 
 # Message formatting and coloring for public-facing logs
-
-
 #def __embedify(timestamp: datetime, colour: Colour, message: str) -> Embed:
 #   return Embed(timestamp=timestamp, colour=colour, description=message)
 
@@ -24,13 +22,21 @@ def __embedify(ShowTimestamp,timestamp: datetime, colour: Colour, message: str) 
                 
     else:
         return Embed(timestamp=None, colour=colour, description=message)
-
+ 
 
 # Chat Message
 
-def chat_message(timestamp: datetime, message: str) -> Embed:
+def chat_message(timestamp: datetime, user: str, avatar, message: str) -> Embed:
     """Stock blurple embed to relay a user's message"""
-    return __embedify(os.getenv("SHOW_TIMESTAMP"), timestamp, Colour.og_blurple(), message)
+    if os.getenv("SHOW_TIMESTAMP") == "yes":
+        embed=Embed(timestamp=timestamp, description=message, color=Colour.og_blurple())
+                
+    else:
+        embed=Embed(timestamp=None, description=message, color=Colour.og_blurple())
+    embed.set_author(name=user, icon_url=avatar)
+
+    return embed
+
 
 # Perk
 
