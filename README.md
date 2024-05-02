@@ -5,13 +5,14 @@ A discord bot for Project Zomboid.
 You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues) any issues, questions, or feature suggestions you have
 
 ## Features
+- Beautiful Discord embed
 - Multilingual (only bot messages sent to Discord are currently translatable)
   - Currently available in french and english
   - Feel free to provide your translated files!
   - Original .pot file for translating is in the locales directory
 - Mirror in-game chat messages to discord channel using linked discord name/avatar
 - Notifications for logins, disconnects, deaths and perk changes
-- Presence shows number of players currently online
+- Bot presence shows number of players currently online with plural support
 - View and change server options
 - Request a map showing a players location (currently only work with vanilla map. no modded map support)
 - [Skills Recovery Journal mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2503622437) support
