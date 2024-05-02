@@ -5,6 +5,9 @@ A discord bot for Project Zomboid.
 You are welcome to [log](https://github.com/buttsbucket/zomboi_bot/issues) any issues, questions, or feature suggestions you have
 
 ## Features
+- Multilingual (only bot messages sent to Discord are currently translatable)
+  - Currently available in: french and english
+  - Feel free to provide your translated files!
 - Mirror in-game chat messages to discord channel using linked discord name/avatar
 - Notifications for logins, disconnects, deaths and perk changes
 - Presence shows number of players currently online
@@ -15,8 +18,7 @@ You are welcome to [log](https://github.com/buttsbucket/zomboi_bot/issues) any i
 - Option to show the chat with discord embed or not
 
 ## TO DO
-- Multilingual (currently only available in french... English available soon)
-- Make bot commands multilingual. 
+- Make bot commands responses multilingual
 - Update the MapHandler to support modded map (if possible)
 - Add other embed display options
 
