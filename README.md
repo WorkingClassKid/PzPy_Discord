@@ -2,20 +2,21 @@
 
 A discord bot for Project Zomboid. 
 
-You are welcome to [log](https://github.com/buttsbucket/zomboi_bot/issues) any issues, questions, or feature suggestions you have
+You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues) any issues, questions, or feature suggestions you have
 
 ## Features
 - Multilingual (only bot messages sent to Discord are currently translatable)
-  - Currently available in: french and english
+  - Currently available in french and english
   - Feel free to provide your translated files!
+  - Original .pot file for translating is in the locales directory
 - Mirror in-game chat messages to discord channel using linked discord name/avatar
 - Notifications for logins, disconnects, deaths and perk changes
 - Presence shows number of players currently online
 - View and change server options
-- Request a map showing a players location
+- Request a map showing a players location (currently only work with vanilla map. no modded map support)
 - [Skills Recovery Journal mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2503622437) support
 - Option to hide / display the timestamp
-- Option to show the chat with discord embed or not
+- Option to show the in-game chat with discord embed or not
 
 ## TO DO
 - Make bot commands responses multilingual
@@ -36,7 +37,7 @@ No Category:
 ```
 
 ## Requirements
-Python 3.8 and above should work
+Python 3.9 and above should work
 
 To install dependencies:
 `pip install -r requirements.txt`
