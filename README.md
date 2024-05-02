@@ -2,8 +2,6 @@
 
 A discord bot for Project Zomboid. 
 
-Initialy forked from https://github.com/JonnyPtn/zomboi/tree/master
-
 You are welcome to [log](https://github.com/buttsbucket/zomboi_bot/issues) any issues, questions, or feature suggestions you have
 
 ## Features
@@ -20,6 +18,7 @@ You are welcome to [log](https://github.com/buttsbucket/zomboi_bot/issues) any i
 - Multilingual (currently only available in french... English available soon)
 - Make bot commands multilingual. 
 - Update the MapHandler to support modded map (if possible)
+- Add other embed display options
 
 ## Commands (prefix: `!`):
 ```
@@ -52,3 +51,6 @@ To run:
 
 It may be a good idea to run as a service, especially on a dedicated server
 
+## Credits
+
+- Initialy forked from [Zomboi](https://github.com/JonnyPtn/zomboi/tree/master)
