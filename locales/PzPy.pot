@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-01 13:30-0400\n"
+"POT-Creation-Date: 2024-05-02 13:57-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,92 +18,72 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: embed.py:40
-msgid "PERK_ICON"
+#: modules/embed.py:48
+msgid "PERK_MESSAGE"
 msgstr ""
 
-#: embed.py:40
-msgid "PERK_REACHED"
+#: modules/embed.py:57
+msgid "SKILL"
 msgstr ""
 
-#: embed.py:40
-msgid "PERK_LEVEL"
+#: modules/embed.py:58
+msgid "LEVEL"
 msgstr ""
 
-#: embed.py:47
-msgid "JOIN_MESSAGE_ICON"
+#: modules/embed.py:66
+msgid "JOIN_MESSAGE"
 msgstr ""
 
-#: embed.py:47
-msgid "JOIN_MESSAGE_START"
+#: modules/embed.py:84
+msgid "ARRIVAL_MESSAGE"
 msgstr ""
 
-#: embed.py:47
-msgid "JOIN_MESSAGE_END"
+#: modules/embed.py:93
+msgid "HOURS_SURVIVED"
 msgstr ""
 
-#: embed.py:54
-msgid "ARRIVAL_MESSAGE_ICON"
+#: modules/embed.py:94
+msgid "NICKNAME"
 msgstr ""
 
-#: embed.py:54
-msgid "ARRIVAL_MESSAGE_START"
+#: modules/embed.py:102
+msgid "LEFT_MESSAGE"
 msgstr ""
 
-#: embed.py:54
-msgid "ARRIVAL_MESSAGE_MIDDLE"
-msgstr ""
-
-#: embed.py:54
-msgid "ARRIVAL_MESSAGE_END"
-msgstr ""
-
-#: embed.py:61
-msgid "LEFT_MESSAGE_ICON"
-msgstr ""
-
-#: embed.py:61
-msgid "LEFT_MESSAGE_START"
-msgstr ""
-
-#: embed.py:61
-msgid "LEFT_MESSAGE_END"
-msgstr ""
-
-#: embed.py:68
+#: modules/embed.py:120
 msgid "DIED_ICON"
 msgstr ""
 
-#: embed.py:68
+#: modules/embed.py:120
 msgid "DIED_MESSAGE"
 msgstr ""
 
-#: embed.py:68
+#: modules/embed.py:120
 msgid "DIED_MESSAGE_END"
 msgstr ""
 
-#: embed.py:75
+#: modules/embed.py:128
 msgid "SRJ_ICON"
 msgstr ""
 
-#: embed.py:75
+#: modules/embed.py:128
 msgid "SRJ_MESSAGE_START"
 msgstr ""
 
-#: embed.py:75
+#: modules/embed.py:128
 msgid "SRJ_MESSAGE_END"
 msgstr ""
 
-#: users.py:126
+#: modules/users.py:126
 msgid "NO_BODY"
 msgstr ""
 
-#: users.py:128
+#: modules/users.py:128
 msgid "ONE_PLAYER"
 msgid_plural "MANY_PLAYERS"
 msgstr[0] ""
 msgstr[1] ""
 
-#: users.py:130
+#: modules/users.py:130
 msgid "PLAY_PZ_WITH"
 msgstr ""

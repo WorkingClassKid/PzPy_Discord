@@ -72,7 +72,7 @@ class PerkHandler(commands.Cog):
         userHandler = self.bot.get_cog("UserHandler")
         user = userHandler.getUser(name)
         char_name = userHandler.getCharName(name) if fromUpdate and user else None
-        log_char_string = "aka " + char_name + " " if char_name else ""
+        log_char_string =  char_name if char_name else ""
 
         # Then position which we set if it's more recent
         x = message[1 : message.find(",")]
@@ -107,17 +107,48 @@ class PerkHandler(commands.Cog):
             if timestamp > self.lastUpdateTimestamp:
                 user.online = True
                 self.bot.log.info(f"{user.name} login")
+                if os.getenv("DEBUG"): # debug show the username who disconnect
+                    self.bot.log.info(f"USERNAME: {user.name.lower()}")
+                
                 if self.notifyJoin:
+                    for member in self.bot.get_all_members():
+                        if os.getenv("DEBUG"): # debug show discord channel member
+                            self.bot.log.info(f"DISCORD MEMBER: {member}")
+                        if user.name.lower() in member.name:
+                            avatar = member.display_avatar
+                            if os.getenv("DEBUG"): # degug show the username match with discord
+                                self.bot.log.info(f"--------MATCH--------") 
+                        else:
+                            if os.getenv("DEBUG"): # degug show their is no match with discord
+                                self.bot.log.info(f"no match")
+                    if os.getenv("DEBUG"): # degug show avatar url
+                        self.bot.log.info(f"avatarurl {avatar}")
+               
                     return modules.embed.resume(
-                        timestamp, user.name, log_char_string, user.hoursAlive
-                    )
+                        timestamp, user.name, log_char_string, avatar, user.hoursAlive)
 
         elif "Created Player" in type:
             if timestamp > self.lastUpdateTimestamp:
                 user.online = True
                 self.bot.log.info(f"{user.name} new character")
+                if os.getenv("DEBUG"): # debug show the username who disconnect
+                    self.bot.log.info(f"USERNAME: {user.name.lower()}")
+                
                 if self.notifyCreateChar:
-                    return modules.embed.join(timestamp, user.name, log_char_string)
+                    for member in self.bot.get_all_members():
+                        if os.getenv("DEBUG"): # debug show discord channel member
+                            self.bot.log.info(f"DISCORD MEMBER: {member}")
+                        if user.name.lower() in member.name:
+                            avatar = member.display_avatar
+                            if os.getenv("DEBUG"): # degug show the username match with discord
+                                self.bot.log.info(f"--------MATCH--------") 
+                        else:
+                            if os.getenv("DEBUG"): # degug show their is no match with discord
+                                self.bot.log.info(f"no match")
+                    if os.getenv("DEBUG"): # degug show avatar url
+                        self.bot.log.info(f"avatarurl {avatar}")
+                    
+                return modules.embed.join(timestamp, user.name, log_char_string, avatar)
 
         elif type == "Level Changed":
             match = re.search(r"\[(\w+)\]\[(\d+)\]", message)
@@ -127,8 +158,21 @@ class PerkHandler(commands.Cog):
             if timestamp > self.lastUpdateTimestamp:
                 self.bot.log.info(f"{user.name} {perk} changed to {level}")
                 if self.notifyPerk:
+                    for member in self.bot.get_all_members():
+                        if os.getenv("DEBUG"): # debug show discord channel member
+                            self.bot.log.info(f"DISCORD MEMBER: {member}")
+                        if user.name.lower() in member.name:
+                            avatar = member.display_avatar
+                            if os.getenv("DEBUG"): # degug show the username match with discord
+                                self.bot.log.info(f"--------MATCH--------") 
+                        else:
+                            if os.getenv("DEBUG"): # degug show their is no match with discord
+                                self.bot.log.info(f"no match")
+                    if os.getenv("DEBUG"): # degug show avatar url
+                        self.bot.log.info(f"avatarurl {avatar}")
+                        
                     return modules.embed.perk(
-                        timestamp, user.name, log_char_string, perk, level
+                        timestamp, user.name, log_char_string, avatar, perk, level
                     )
      # Skill Recovery Journal FIX
         elif type == "SRJ START READING":

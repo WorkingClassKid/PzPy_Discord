@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-30 18:11-0400\n"
-"PO-Revision-Date: 2024-04-30 18:19-0400\n"
+"POT-Creation-Date: 2024-05-02 13:57-0400\n"
+"PO-Revision-Date: 2024-05-02 14:08-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -14,92 +14,99 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 "X-Poedit-Basepath: .\n"
 
-#: embed.py:41
-msgid "PERK_ICON"
-msgstr ":bar_chart:"
+#: modules/embed.py:48
+msgid "PERK_MESSAGE"
+msgstr "is gaining experience and just leveled up!"
 
-#: embed.py:41
-msgid "PERK_REACHED"
-msgstr "reached"
+#: modules/embed.py:57
+msgid "SKILL"
+msgstr "Skill"
 
-#: embed.py:41
-msgid "PERK_LEVEL"
-msgstr "level"
+#: modules/embed.py:58
+msgid "LEVEL"
+msgstr "Level"
 
-#: embed.py:48
-msgid "JOIN_MESSAGE_ICON"
-msgstr ":bust_in_silhouette:"
-
-#: embed.py:48
-msgid "JOIN_MESSAGE_START"
-msgstr " "
-
-#: embed.py:48
-msgid "JOIN_MESSAGE_END"
+#: modules/embed.py:66
+msgid "JOIN_MESSAGE"
 msgstr "just woke up in the Apocalypse..."
 
-#: embed.py:55
-msgid "ARRIVAL_MESSAGE_ICON"
-msgstr ":parachute:"
+#: modules/embed.py:84
+msgid "ARRIVAL_MESSAGE"
+msgstr "just arrived on the server and is ready to die"
 
-#: embed.py:55
-msgid "ARRIVAL_MESSAGE_START"
-msgstr " "
+#: modules/embed.py:93
+msgid "HOURS_SURVIVED"
+msgstr "Hours Survived"
 
-#: embed.py:55
-msgid "ARRIVAL_MESSAGE_MIDDLE"
-msgstr "has arrived, survived for"
+#: modules/embed.py:94
+msgid "NICKNAME"
+msgstr "Nickname"
 
-#: embed.py:55
-msgid "ARRIVAL_MESSAGE_END"
-msgstr "hours so far..."
-
-#: embed.py:62
-msgid "LEFT_MESSAGE_ICON"
-msgstr ":person_running:"
-
-#: embed.py:62
-msgid "LEFT_MESSAGE_START"
-msgstr " "
-
-#: embed.py:62
-msgid "LEFT_MESSAGE_END"
+#: modules/embed.py:102
+msgid "LEFT_MESSAGE"
 msgstr "has left"
 
-#: embed.py:69
+#: modules/embed.py:120
 msgid "DIED_ICON"
 msgstr ":skull_crossbones:"
 
-#: embed.py:69
+#: modules/embed.py:120
 msgid "DIED_MESSAGE"
 msgstr "died after surviving"
 
-#: embed.py:69
+#: modules/embed.py:120
 msgid "DIED_MESSAGE_END"
 msgstr "hours :dizzy_face:"
 
-#: embed.py:76
+#: modules/embed.py:128
 msgid "SRJ_ICON"
 msgstr ":book:"
 
-#: embed.py:76
+#: modules/embed.py:128
 msgid "SRJ_MESSAGE_START"
 msgstr " "
 
-#: embed.py:76
+#: modules/embed.py:128
 msgid "SRJ_MESSAGE_END"
 msgstr "read is Skill recovery journal"
 
-#: users.py:123
+#: modules/users.py:126
+msgid "NO_BODY"
+msgstr "no body"
+
+#: modules/users.py:128
 msgid "ONE_PLAYER"
 msgid_plural "MANY_PLAYERS"
 msgstr[0] "1 player"
 msgstr[1] "%(num) players"
 
-#: users.py:124
-msgid "NO_BODY"
-msgstr "no body"
-
-#: users.py:127
+#: modules/users.py:130
 msgid "PLAY_PZ_WITH"
 msgstr "PZ with"
+
+#~ msgid "PERK_ICON"
+#~ msgstr ":bar_chart:"
+
+#~ msgid "PERK_REACHED"
+#~ msgstr "reached"
+
+#~ msgid "JOIN_MESSAGE_ICON"
+#~ msgstr ":bust_in_silhouette:"
+
+#~ msgid "JOIN_MESSAGE_START"
+#~ msgstr " "
+
+#~ msgid "ARRIVAL_MESSAGE_ICON"
+#~ msgstr ":parachute:"
+
+#~ msgid "ARRIVAL_MESSAGE_START"
+#~ msgstr " "
+
+#~ msgid "ARRIVAL_MESSAGE_MIDDLE"
+#~ msgstr "has arrived, survived for"
+
+#~ msgid "LEFT_MESSAGE_ICON"
+#~ msgstr ":person_running:"
+
+#~ msgid "LEFT_MESSAGE_START"
+#~ msgstr " "
