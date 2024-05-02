@@ -45,7 +45,7 @@ Perk
 '''
 def perk(timestamp: datetime, user: str, aka: str, avatar, perk: str, level: int) -> Embed:
     """Blue embed to indicate a user's level-up"""
-    message = _("PERK_MESSAGE")
+    message = f"{aka} " + _("PERK_MESSAGE")
        #embed creation
     if os.getenv("SHOW_TIMESTAMP") == "yes":
         embed=Embed(timestamp=timestamp, description=message, color=Colour.blue())

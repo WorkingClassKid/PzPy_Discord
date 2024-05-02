@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-02 13:57-0400\n"
-"PO-Revision-Date: 2024-05-02 14:39-0400\n"
+"PO-Revision-Date: 2024-05-02 15:22-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -37,7 +37,7 @@ msgstr "vient de se réveiller dans l'apocalypse..."
 
 #: modules/embed.py:84
 msgid "ARRIVAL_MESSAGE"
-msgstr "vient d'arriver sur le serveur et est prêt à mourrir!"
+msgstr "vient d'arriver sur le serveur et est prêt à mourir!"
 
 #: modules/embed.py:93
 msgid "HOURS_SURVIVED"
@@ -49,7 +49,7 @@ msgstr "Surnom"
 
 #: modules/embed.py:102
 msgid "LEFT_MESSAGE"
-msgstr ":man_running: a quitté (et est retourné voir sa mère en pleurant :rofl: )"
+msgstr ":person_running: a quitté (et est retourné voir sa mère en pleurant :rofl: )"
 
 #: modules/embed.py:120
 msgid "DIED_ICON"

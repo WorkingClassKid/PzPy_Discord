@@ -68,7 +68,7 @@ class PerkHandler(commands.Cog):
         message = message[message.find("[", 2) + 1 :]
 
         # Next is the name which we use to get the user
-        name, message = message.split("]", 1)
+        name, message = message.split("]", 1) #name = steamid
         userHandler = self.bot.get_cog("UserHandler")
         user = userHandler.getUser(name)
         char_name = userHandler.getCharName(name) if fromUpdate and user else None
