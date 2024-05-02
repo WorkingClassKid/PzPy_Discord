@@ -87,7 +87,7 @@ class ChatHandler(commands.Cog):
                     self.bot.log.info(f"avatarurl {avatar_url}")
                 await self.webhook.send(
                     embed=modules.embed.chat_message(timestamp, match.group(1), avatar_url, match.group(2)),
-                    username=name, 
+                    username=match.group(1), 
                     avatar_url=avatar_url,
                 )
                 
