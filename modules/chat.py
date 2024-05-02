@@ -64,24 +64,37 @@ class ChatHandler(commands.Cog):
                     if webhook.user == self.bot.user:
                         self.webhook = webhook
             if self.webhook is None:
-                self.webhook = await self.bot.channel.create_webhook(name="zomboi")
+                self.webhook = await self.bot.channel.create_webhook(name="PzPy")
 
-            name = match.group(1)
+            name = match.group(1).lower()
+            if os.getenv("DEBUG"): # degug show the username of people who write in the chat
+                self.bot.log.info(f"CHAT USERNAME: {name}")
             avatar_url = None
             EmbedChat = os.getenv("EMBED_CHAT")
             for member in self.bot.get_all_members():
-                if match.group(1) in member.name:
+                if os.getenv("DEBUG"): # debug show discord channel member
+                    self.bot.log.info(f"DISCORD MEMBER: {member}")
+                
+                if name in member.name:
                     avatar_url = member.display_avatar
-            
+                    if os.getenv("DEBUG"): # degug show the username match with discord
+                        self.bot.log.info(f"--------MATCH--------") 
+                else:
+                    if os.getenv("DEBUG"): # degug show their is no match with discord
+                        self.bot.log.info(f"no match") 
             if EmbedChat == "yes":
+                if os.getenv("DEBUG"): # degug show avatar url
+                    self.bot.log.info(f"avatarurl {avatar_url}")
                 await self.webhook.send(
                     embed=modules.embed.chat_message(timestamp, match.group(1), avatar_url, match.group(2)),
+                    username=name, 
+                    avatar_url=avatar_url,
                 )
                 
             else:
                 await self.webhook.send(
                     match.group(2),
-                    username=name, 
+                    username=match.group(1), 
                     avatar_url=avatar_url
                 )
                 

@@ -28,11 +28,13 @@ def __embedify(ShowTimestamp,timestamp: datetime, colour: Colour, message: str) 
 
 def chat_message(timestamp: datetime, user: str, avatar, message: str) -> Embed:
     """Stock blurple embed to relay a user's message"""
+    #embed creation
     if os.getenv("SHOW_TIMESTAMP") == "yes":
         embed=Embed(timestamp=timestamp, description=message, color=Colour.og_blurple())
                 
     else:
         embed=Embed(timestamp=None, description=message, color=Colour.og_blurple())
+    #embed additionnal field
     embed.set_author(name=user, icon_url=avatar)
 
     return embed
