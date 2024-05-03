@@ -88,7 +88,7 @@ async def on_ready():
         PzPy.log.warning("Unable to get channel, will not be enabled")
     else:
         PzPy.log.info("channel connected")
-    await PzPy.add_cog(UserHandler(PzPy, logPath))
+    await PzPy.add_cog(UserHandler(PzPy, logPath, dataPath))
     await PzPy.add_cog(ChatHandler(PzPy, logPath))
     await PzPy.add_cog(PerkHandler(PzPy, logPath, dataPath))
     await PzPy.add_cog(RCONAdapter(PzPy))

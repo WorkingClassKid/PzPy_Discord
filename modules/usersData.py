@@ -16,6 +16,6 @@ class UsersData():
             self.bot.log.warning(f"DATA directory is missing: {dataPath} . We will create it")
             os.makedirs(dataPath)
         if not os.path.exists(dataPath):
-            self.bot.log.error(f"DATA directory is missing: {dataPath} . Unable to create it")
+            self.bot.log.error(f"ERROR: DATA directory is missing: {dataPath} . Unable to create it")
         else:
             self.bot.log.info(f"DATA directory exist: {dataPath}")

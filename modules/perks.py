@@ -7,6 +7,7 @@ import os
 import re
 import modules.embed
 import modules.usersData
+import modules.serverData
 
 class PerkHandler(commands.Cog):
     """Class which handles the Perk log files"""
@@ -64,7 +65,7 @@ class PerkHandler(commands.Cog):
     # Parse a line in the user log file and take appropriate action
 
     def handleLog(self, timestamp: datetime, message: str, fromUpdate=False) -> Embed | None:
-        # on trouve le steamid
+        # SteamID - We search for the steamid
         steamid, trash = message.split("]", 1)
         steamid = steamid.translate({ord('['): None})
         steamid = steamid.translate({ord(' '): None}) #fix unknown space issue
@@ -104,17 +105,23 @@ class PerkHandler(commands.Cog):
                 self.bot.log.info(f"{user.name} died")
                 if self.notifyDeath:
                     for member in self.bot.get_all_members():
+                    
                         if os.getenv("DEBUG"): # debug show discord channel member
                             self.bot.log.info(f"DISCORD MEMBER: {member}")
+                            
                         if user.name.lower() in member.name:
                             avatar = member.display_avatar
+                            
                             if os.getenv("DEBUG"): # degug show the username match with discord
                                 self.bot.log.info(f"--------MATCH--------") 
+                                
                         else:
                             if os.getenv("DEBUG"): # degug show their is no match with discord
                                 self.bot.log.info(f"no match")
+                                
                     if os.getenv("DEBUG"): # degug show avatar url
                         self.bot.log.info(f"avatarurl {avatar}")
+                        
                     return modules.embed.death(
                         timestamp, user.name, log_char_string, avatar, user.hoursAlive
                     )
@@ -126,20 +133,29 @@ class PerkHandler(commands.Cog):
                 # On regarde si le repertoire data de l'utilisateur existe, sinon on le créer
                 self.bot.log.info(f"{user.name} DATA Path:" + os.path.join(self.dataPath,steamid))
                 modules.usersData.UsersData.createUserDir(self, self.dataPath, steamid)
+                # We put the user online in data/online.users file
+                modules.serverData.UserStatus.isOnline(self, self.dataPath, user.name, steamid)
+
                 if os.getenv("DEBUG"): # debug show the username who resume is game
-                    self.bot.log.info(f"SERVER USERNAME: {user.name.lower()}")
+                    self.bot.log.info(f"LOGIN USERNAME: {user.name.lower()}")
                 
                 if self.notifyJoin:
+                    # we check in the discord channel for a username match
                     for member in self.bot.get_all_members():
+                    
                         if os.getenv("DEBUG"): # debug show discord channel member
                             self.bot.log.info(f"DISCORD MEMBER: {member}")
+                            
                         if user.name.lower() in member.name:
                             avatar = member.display_avatar
+                            
                             if os.getenv("DEBUG"): # degug show the username match with discord
                                 self.bot.log.info(f"--------MATCH--------") 
+                                
                         else:
                             if os.getenv("DEBUG"): # degug show their is no match with discord
                                 self.bot.log.info(f"no match")
+                                
                     if os.getenv("DEBUG"): # degug show avatar url
                         self.bot.log.info(f"avatarurl {avatar}")
                
@@ -150,20 +166,26 @@ class PerkHandler(commands.Cog):
             if timestamp > self.lastUpdateTimestamp:
                 user.online = True
                 self.bot.log.info(f"{user.name} new character")
+                
                 if os.getenv("DEBUG"): # debug show the username who created a player
-                    self.bot.log.info(f"SERVER USERNAME: {user.name.lower()}")
+                    self.bot.log.info(f"CREATED PLAYER USERNAME: {user.name.lower()}")
                 
                 if self.notifyCreateChar:
                     for member in self.bot.get_all_members():
+                    
                         if os.getenv("DEBUG"): # debug show discord channel member
                             self.bot.log.info(f"DISCORD MEMBER: {member}")
+                            
                         if user.name.lower() in member.name:
                             avatar = member.display_avatar
+                            
                             if os.getenv("DEBUG"): # degug show the username match with discord
                                 self.bot.log.info(f"--------MATCH--------") 
+                                
                         else:
                             if os.getenv("DEBUG"): # degug show their is no match with discord
                                 self.bot.log.info(f"no match")
+                                
                     if os.getenv("DEBUG"): # degug show avatar url
                         self.bot.log.info(f"avatarurl {avatar}")
                     
@@ -177,7 +199,7 @@ class PerkHandler(commands.Cog):
             if timestamp > self.lastUpdateTimestamp:
                 self.bot.log.info(f"{user.name} {perk} changed to {level}")
                 if os.getenv("DEBUG"): # debug show the username who changed perk
-                    self.bot.log.info(f"SERVER USERNAME: {user.name.lower()}")
+                    self.bot.log.info(f"LEVEL CHANGED USERNAME: {user.name.lower()}")
                 if self.notifyPerk:
                     for member in self.bot.get_all_members():
                         if os.getenv("DEBUG"): # debug show discord channel member

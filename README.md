@@ -18,6 +18,7 @@ You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues)
 - [Skills Recovery Journal mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2503622437) support
 - Option to hide / display the timestamp
 - Option to show the in-game chat with discord embed or not
+- Compatible with server connected to Steam (not compatible with GOG (and will never be...))
 
 ## TO DO
 - Prevent people who reading Skills Recovery Journal to flood the discord channel with their skills upgrades (top priority)
@@ -29,6 +30,9 @@ You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues)
 - Ability to check for mods updates and if needed message the users and restart the server
 - Send server online/offline message to the discord channel
 - Update the MapHandler to support modded map (if possible and not before PZ build 42)(low priority)
+
+# NOTICE
+I'm not an expert programmer.... I program in my spare time for fun and I learn everything by myself.... I'm (not) sorry to the purists if the code is not optimal. But at least it works and I have fun making it :-)
 
 ## Commands (prefix: `!`):
 ```

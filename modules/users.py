@@ -11,7 +11,7 @@ from typing import List
 from pathlib import Path
 import sqlite3
 import modules.embed
-
+import modules.serverData
 
 import gettext
 
@@ -26,7 +26,6 @@ bot_translate = gettext.translation(appname, localedir, fallback=False, language
 bot_translate.install(names=['ngettext'])
 
 DISCORD_MAX_CHAR = 2000
-
 
 @dataclass
 class User:
@@ -45,9 +44,10 @@ class User:
 class UserHandler(commands.Cog):
     """Handles all the info we get from the user log files"""
 
-    def __init__(self, bot, logPath):
+    def __init__(self, bot, logPath, dataPath):
         self.bot = bot
         self.logPath = logPath
+        self.dataPath = dataPath
         self.lastUpdateTimestamp = datetime.now()
         self.users = {}
         self.notifyDisconnect = os.getenv("DISCONNECTS", "True") == "True"
@@ -178,6 +178,8 @@ class UserHandler(commands.Cog):
                                 self.bot.log.info(f"no match")
                     if os.getenv("DEBUG"): # degug show avatar url
                         self.bot.log.info(f"avatarurl {avatar}")
+                        
+                    modules.serverData.UserStatus.isOffline(self, self.dataPath, user.name)
                     return modules.embed.leave(timestamp, user.name, avatar)
 
         elif "fully connected" in message:
