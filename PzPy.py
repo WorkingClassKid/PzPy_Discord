@@ -63,7 +63,7 @@ discordLogger.addHandler(handler)
 
 # set up our logging
 PzPy.log = logging.getLogger("PzPy")
-coloredlogs.install(level='DEBUG', logger=PzPy.log)
+coloredlogs.install(level=os.getenv("LOG_LEVEL"), logger=PzPy.log)
 handler = logging.FileHandler(filename="logs/PzPy.log")
 handler.setFormatter(logFormat)
 handler.setLevel(logging.DEBUG)
