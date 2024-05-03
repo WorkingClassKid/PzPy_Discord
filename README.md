@@ -31,9 +31,6 @@ You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues)
 - Send server online/offline message to the discord channel
 - Update the MapHandler to support modded map (if possible and not before PZ build 42)(low priority)
 
-# NOTICE
-I'm not an expert programmer.... I program in my spare time for fun and I learn everything by myself.... I'm (not) sorry to the purists if the code is not optimal. But at least it works and I have fun making it :-)
-
 ## Commands (prefix: `!`):
 ```
 MapHandler:
@@ -48,7 +45,8 @@ No Category:
 ```
 
 ## Requirements
-Python 3.9 and above should work
+- Python 3.9 and above should work
+- Project Zomboid server / PzPy need to run on a Linux dedicated server/vps(tested with Ubuntu)(not tested on Windows)
 
 To install dependencies:
 `pip install -r requirements.txt`
@@ -63,8 +61,12 @@ This bot works by monitoring the log files produced by the game, so must be run 
 To run:
 `python PzPy.py`
 
+
 It may be a good idea to run as a service, especially on a dedicated server
 
 ## Credits
 
 - Initialy forked from [Zomboi](https://github.com/JonnyPtn/zomboi/tree/master)
+
+## NOTICE
+I'm not an expert programmer.... I program in my spare time for fun and I learn everything by myself.... I'm (not) sorry to the purists if the code is not optimal. But at least it works and I have fun making it :-)
