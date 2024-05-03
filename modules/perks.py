@@ -105,22 +105,16 @@ class PerkHandler(commands.Cog):
                 self.bot.log.info(f"{user.name} died")
                 if self.notifyDeath:
                     for member in self.bot.get_all_members():
-                    
-                        if os.getenv("DEBUG"): # debug show discord channel member
-                            self.bot.log.info(f"DISCORD MEMBER: {member}")
+                        self.bot.log.debug(f"DISCORD MEMBER: {member}") # debug show discord channel member
                             
                         if user.name.lower() in member.name:
                             avatar = member.display_avatar
                             
-                            if os.getenv("DEBUG"): # degug show the username match with discord
-                                self.bot.log.info(f"--------MATCH--------") 
-                                
+                            self.bot.log.debug(f"--------MATCH--------") # degug show the username match with discord 
                         else:
-                            if os.getenv("DEBUG"): # degug show their is no match with discord
-                                self.bot.log.info(f"no match")
+                            self.bot.log.debug(f"no match")  # degug show their is no match with discord
                                 
-                    if os.getenv("DEBUG"): # degug show avatar url
-                        self.bot.log.info(f"avatarurl {avatar}")
+                    self.bot.log.debug(f"avatarurl {avatar}") # degug show avatar url
                         
                     return modules.embed.death(
                         timestamp, user.name, log_char_string, avatar, user.hoursAlive
@@ -136,28 +130,24 @@ class PerkHandler(commands.Cog):
                 # We put the user online in data/online.users file
                 modules.serverData.UserStatus.isOnline(self, self.dataPath, user.name, steamid)
 
-                if os.getenv("DEBUG"): # debug show the username who resume is game
-                    self.bot.log.info(f"LOGIN USERNAME: {user.name.lower()}")
+
+                self.bot.log.debug(f"LOGIN USERNAME: {user.name.lower()}") # debug show the username who resume is game
                 
                 if self.notifyJoin:
                     # we check in the discord channel for a username match
                     for member in self.bot.get_all_members():
                     
-                        if os.getenv("DEBUG"): # debug show discord channel member
-                            self.bot.log.info(f"DISCORD MEMBER: {member}")
+                        self.bot.log.debug(f"DISCORD MEMBER: {member}") # debug show discord channel member
                             
                         if user.name.lower() in member.name:
                             avatar = member.display_avatar
-                            
-                            if os.getenv("DEBUG"): # degug show the username match with discord
-                                self.bot.log.info(f"--------MATCH--------") 
+
+                            self.bot.log.debug(f"--------MATCH--------") # degug show the username match with discord
                                 
                         else:
-                            if os.getenv("DEBUG"): # degug show their is no match with discord
-                                self.bot.log.info(f"no match")
+                            self.bot.log.debug(f"no match") # degug show their is no match with discord
                                 
-                    if os.getenv("DEBUG"): # degug show avatar url
-                        self.bot.log.info(f"avatarurl {avatar}")
+                    self.bot.log.debug(f"avatarurl {avatar}") # degug show avatar url
                
                     return modules.embed.resume(
                         timestamp, user.name, log_char_string, avatar, user.hoursAlive)
@@ -167,27 +157,24 @@ class PerkHandler(commands.Cog):
                 user.online = True
                 self.bot.log.info(f"{user.name} new character")
                 
-                if os.getenv("DEBUG"): # debug show the username who created a player
-                    self.bot.log.info(f"CREATED PLAYER USERNAME: {user.name.lower()}")
+
+                self.bot.log.info(f"CREATED PLAYER USERNAME: {user.name.lower()}") # debug show the username who created a player
                 
                 if self.notifyCreateChar:
                     for member in self.bot.get_all_members():
                     
-                        if os.getenv("DEBUG"): # debug show discord channel member
-                            self.bot.log.info(f"DISCORD MEMBER: {member}")
+                        self.bot.log.debug(f"DISCORD MEMBER: {member}")  # debug show discord channel member
                             
                         if user.name.lower() in member.name:
                             avatar = member.display_avatar
                             
-                            if os.getenv("DEBUG"): # degug show the username match with discord
-                                self.bot.log.info(f"--------MATCH--------") 
-                                
+                            self.bot.log.debug(f"--------MATCH--------")  # degug show the username match with discord
+                                 
                         else:
-                            if os.getenv("DEBUG"): # degug show their is no match with discord
-                                self.bot.log.info(f"no match")
+                            self.bot.log.debug(f"no match") # degug show their is no match with discord
                                 
-                    if os.getenv("DEBUG"): # degug show avatar url
-                        self.bot.log.info(f"avatarurl {avatar}")
+
+                    self.bot.log.debug(f"avatarurl {avatar}") # degug show avatar url
                     
                 return modules.embed.join(timestamp, user.name, log_char_string, avatar)
 
@@ -198,21 +185,16 @@ class PerkHandler(commands.Cog):
             user.perks[perk] = level
             if timestamp > self.lastUpdateTimestamp:
                 self.bot.log.info(f"{user.name} {perk} changed to {level}")
-                if os.getenv("DEBUG"): # debug show the username who changed perk
-                    self.bot.log.info(f"LEVEL CHANGED USERNAME: {user.name.lower()}")
+                self.bot.log.debug(f"LEVEL CHANGED USERNAME: {user.name.lower()}") # debug show the username who changed perk
                 if self.notifyPerk:
                     for member in self.bot.get_all_members():
-                        if os.getenv("DEBUG"): # debug show discord channel member
-                            self.bot.log.info(f"DISCORD MEMBER: {member}")
+                        self.bot.log.debug(f"DISCORD MEMBER: {member}") # debug show discord channel member
                         if user.name.lower() in member.name:
                             avatar = member.display_avatar
-                            if os.getenv("DEBUG"): # degug show the username match with discord
-                                self.bot.log.info(f"--------MATCH--------") 
+                            self.bot.log.debug(f"--------MATCH--------") # degug show the username match with discord
                         else:
-                            if os.getenv("DEBUG"): # degug show their is no match with discord
-                                self.bot.log.info(f"no match")
-                    if os.getenv("DEBUG"): # degug show avatar url
-                        self.bot.log.info(f"avatarurl {avatar}")
+                            self.bot.log.debug(f"no match") # degug show their is no match with discord
+                    self.bot.log.debug(f"avatarurl {avatar}")  # degug show avatar url
                         
                     return modules.embed.perk(
                         timestamp, user.name, log_char_string, avatar, perk, level

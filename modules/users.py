@@ -162,22 +162,18 @@ class UserHandler(commands.Cog):
             if timestamp > self.lastUpdateTimestamp:
                 self.bot.log.info(f"{user.name} disconnected")
                 
-                if os.getenv("DEBUG"): # debug show the username who disconnect
-                    self.bot.log.info(f"USERNAME: {user.name.lower()}")
+                self.bot.log.debug(f"USERNAME: {user.name.lower()}") # debug show the username who disconnect
                 
                 if self.notifyDisconnect:
                     for member in self.bot.get_all_members():
-                        if os.getenv("DEBUG"): # debug show discord channel member
-                            self.bot.log.info(f"DISCORD MEMBER: {member}")
+                        self.bot.log.debug(f"DISCORD MEMBER: {member}") # debug show discord channel member
                         if user.name.lower() in member.name:
                             avatar = member.display_avatar
-                            if os.getenv("DEBUG"): # degug show the username match with discord
-                                self.bot.log.info(f"--------MATCH--------") 
+                            self.bot.log.debug(f"--------MATCH--------") # degug show the username match with discord
                         else:
-                            if os.getenv("DEBUG"): # degug show their is no match with discord
-                                self.bot.log.info(f"no match")
-                    if os.getenv("DEBUG"): # degug show avatar url
-                        self.bot.log.info(f"avatarurl {avatar}")
+                            self.bot.log.debug(f"no match")  # degug show their is no match with discord
+
+                    self.bot.log.debug(f"avatarurl {avatar}") # degug show avatar url
                         
                     modules.serverData.UserStatus.isOffline(self, self.dataPath, user.name)
                     return modules.embed.leave(timestamp, user.name, avatar)

@@ -54,7 +54,7 @@ intents.message_content = True
 PzPy = commands.bot.Bot("!", intents=intents)
 
 # Redirect the discord log to a file
-logFormat = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s: %(message)s")
+logFormat = logging.Formatter(os.getenv("COLOREDLOGS_LOG_FORMAT"))
 discordLogger = logging.getLogger("discord")
 discordLogger.setLevel(logging.DEBUG)
 handler = logging.FileHandler(filename="logs/discord.log", encoding="utf-8", mode="w")

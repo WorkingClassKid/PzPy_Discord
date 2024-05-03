@@ -65,5 +65,5 @@ class UserStatus():
                     if username in content:
                         self.bot.log.error(f"ERROR: data (online.users): {username} is online and should be offline. Failed to adjust")
                     else:
-                        self.bot.log.error(f"data (online.users): {username} is offline")
+                        self.bot.log.info(f"data (online.users): {username} is now offline")
                     
