@@ -9,7 +9,8 @@ class UsersData():
         self.logPath = logPath
         
     
-    # createUserDir - Create directory for the user data
+    # createUserDir
+    # Create directory for the user data
     def createUserDir(self, dataPath, steamid):
         dataPath = os.path.join(dataPath, steamid)
         if not os.path.exists(dataPath):

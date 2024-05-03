@@ -14,6 +14,7 @@ from modules.admin import AdminLogHandler
 from modules.rcon_adapter import RCONAdapter
 import modules.embed
 import gettext
+import coloredlogs, logging
 load_dotenv(override=True)
 
 #setup gettext
@@ -62,15 +63,13 @@ discordLogger.addHandler(handler)
 
 # set up our logging
 PzPy.log = logging.getLogger("PzPy")
-handler = logging.StreamHandler()
-handler.setFormatter(logFormat)
-handler.setLevel(logging.INFO)
-PzPy.log.addHandler(handler)
+coloredlogs.install(level='DEBUG', logger=PzPy.log)
 handler = logging.FileHandler(filename="logs/PzPy.log")
 handler.setFormatter(logFormat)
 handler.setLevel(logging.DEBUG)
 PzPy.log.addHandler(handler)
 PzPy.log.setLevel(logging.DEBUG)
+
 
 
 @PzPy.event

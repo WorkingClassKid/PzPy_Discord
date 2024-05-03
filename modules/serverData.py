@@ -9,7 +9,8 @@ class UserStatus():
         self.bot = bot
         
     
-    # isOnline - Check if the user is online in data/online.users. If not, make it online
+    # isOnline
+    # Check if the user is online in data/online.users. If not, make it online
     def isOnline(self, dataPath, username, steamid):
         userData = username + ":" + steamid
         dataPath = os.path.join(dataPath, "online.users")
@@ -36,7 +37,9 @@ class UserStatus():
                     else:
                         self.bot.log.error(f"ERROR: data (online.users): {username} is offline and should be online. Failed to adjust.")
                         
-    # isOffline - Check if the user is offline in data/online.users. If not, make it offline
+    
+    # isOffline
+    # Check if the user is offline in data/online.users. If not, make it offline
     def isOffline(self, dataPath, username):
         dataPath = os.path.join(dataPath, "online.users")
         # we check if the online.users file exist. if not we will create it
