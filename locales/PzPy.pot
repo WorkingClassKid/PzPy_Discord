@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-02 13:57-0400\n"
+"POT-Creation-Date: 2024-05-02 16:12-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,55 +22,47 @@ msgstr ""
 msgid "PERK_MESSAGE"
 msgstr ""
 
-#: modules/embed.py:57
+#: modules/embed.py:58
 msgid "SKILL"
 msgstr ""
 
-#: modules/embed.py:58
+#: modules/embed.py:59
 msgid "LEVEL"
 msgstr ""
 
-#: modules/embed.py:66
+#: modules/embed.py:67
 msgid "JOIN_MESSAGE"
 msgstr ""
 
-#: modules/embed.py:84
+#: modules/embed.py:85
 msgid "ARRIVAL_MESSAGE"
 msgstr ""
 
-#: modules/embed.py:93
+#: modules/embed.py:95 modules/embed.py:130
 msgid "HOURS_SURVIVED"
 msgstr ""
 
-#: modules/embed.py:94
+#: modules/embed.py:96
 msgid "NICKNAME"
 msgstr ""
 
-#: modules/embed.py:102
+#: modules/embed.py:104
 msgid "LEFT_MESSAGE"
 msgstr ""
 
-#: modules/embed.py:120
-msgid "DIED_ICON"
-msgstr ""
-
-#: modules/embed.py:120
+#: modules/embed.py:122
 msgid "DIED_MESSAGE"
 msgstr ""
 
-#: modules/embed.py:120
-msgid "DIED_MESSAGE_END"
-msgstr ""
-
-#: modules/embed.py:128
+#: modules/embed.py:139
 msgid "SRJ_ICON"
 msgstr ""
 
-#: modules/embed.py:128
+#: modules/embed.py:139
 msgid "SRJ_MESSAGE_START"
 msgstr ""
 
-#: modules/embed.py:128
+#: modules/embed.py:139
 msgid "SRJ_MESSAGE_END"
 msgstr ""
 

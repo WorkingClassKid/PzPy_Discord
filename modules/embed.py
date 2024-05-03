@@ -104,10 +104,10 @@ def leave(timestamp: datetime, user: str, avatar) -> Embed:
     message = _("LEFT_MESSAGE")
     #embed creation
     if os.getenv("SHOW_TIMESTAMP") == "yes":
-        embed=Embed(timestamp=timestamp, description=message, color=Colour.red())
+        embed=Embed(timestamp=timestamp, description=message, color=Colour.greyple())
                 
     else:
-        embed=Embed(timestamp=None, description=message, color=Colour.red())
+        embed=Embed(timestamp=None, description=message, color=Colour.greyple())
     #embed additionnal field
     embed.set_author(name=user, icon_url=avatar)
 
@@ -117,10 +117,19 @@ def leave(timestamp: datetime, user: str, avatar) -> Embed:
 '''
 Death 
 '''
-def death(timestamp: datetime, user: str, aka: str, hours: int) -> Embed:
+def death(timestamp: datetime, user: str, aka: str, avatar, hours: int) -> Embed:
     """Dark embed to indicate a user's/character's death"""
-    message = _("DIED_ICON") + f" **{user}** {aka} " + _("DIED_MESSAGE") +  f" {hours} " +_("DIED_MESSAGE_END")
-    return __embedify(os.getenv("SHOW_TIMESTAMP"), timestamp, Colour.dark_red(), message)
+    message = f"{aka} " + _("DIED_MESSAGE")
+    if os.getenv("SHOW_TIMESTAMP") == "yes":
+        embed=Embed(timestamp=timestamp, description=message, color=Colour.dark_embed())
+                
+    else:
+        embed=Embed(timestamp=None, description=message, color=Colour.dark_embed())
+    #embed additionnal field
+    embed.set_author(name=user, icon_url=avatar)
+    embed.add_field(name=_("HOURS_SURVIVED"), value=hours, inline=True)
+
+    return embed
     
 '''
 Skill Recovery Journal

@@ -20,9 +20,15 @@ You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues)
 - Option to show the in-game chat with discord embed or not
 
 ## TO DO
+- Prevent people who reading Skills Recovery Journal to flood the discord channel with their skills upgrades (top priority)
+- Options to choose witch data to send in the admin channel
 - Make bot commands responses multilingual
-- Update the MapHandler to support modded map (if possible)
+- Better bot commands/responses
+  - store users data per steamid to make !info and !users better
 - Add other embed display options
+- Ability to check for mods updates and if needed message the users and restart the server
+- Send server online/offline message to the discord channel
+- Update the MapHandler to support modded map (if possible and not before PZ build 42)(low priority)
 
 ## Commands (prefix: `!`):
 ```

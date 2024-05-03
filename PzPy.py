@@ -14,6 +14,7 @@ from modules.admin import AdminLogHandler
 from modules.rcon_adapter import RCONAdapter
 import modules.embed
 import gettext
+load_dotenv(override=True)
 
 #setup gettext
 appname = 'zomboid_bot'
@@ -21,10 +22,6 @@ localedir = os.getenv("LANGUAGE_DIR")
 language= os.getenv("BOT_LANGUAGE")
 bot_translate = gettext.translation(appname, localedir, fallback=False, languages=[language])
 bot_translate.install(names=['ngettext'])
-
-load_dotenv(override=True)
-
-logPath = os.getenv("LOGS_PATH")
 
 
 
@@ -35,8 +32,18 @@ if logPath is None or len(logPath) == 0:
     if path.exists():
         logPath = str(path)
     else:
-        logging.error("Zomboid log path not set and unable to find default")
+        logging.error("Zomboid log path not set and/or unable to find default")
         exit()
+        
+# Verify the users data directory path
+dataPath = os.getenv("DATA_PATH")
+if dataPath is None or len(dataPath) == 0:
+    path = Path.cwd().joinpath("data")
+    if path.exists():
+        dataPath = str(path)
+    else:
+        logging.error("Users data path not set and/or unable to find default")
+        exit()        
 
 # Our main bot object
 intents = discord.Intents.default()
@@ -83,7 +90,7 @@ async def on_ready():
         PzPy.log.info("channel connected")
     await PzPy.add_cog(UserHandler(PzPy, logPath))
     await PzPy.add_cog(ChatHandler(PzPy, logPath))
-    await PzPy.add_cog(PerkHandler(PzPy, logPath))
+    await PzPy.add_cog(PerkHandler(PzPy, logPath, dataPath))
     await PzPy.add_cog(RCONAdapter(PzPy))
     await PzPy.add_cog(MapHandler(PzPy))
     await PzPy.add_cog(AdminLogHandler(PzPy, logPath))
