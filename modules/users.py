@@ -11,7 +11,7 @@ from typing import List
 from pathlib import Path
 import sqlite3
 import modules.embed
-
+import modules.serverData
 
 import gettext
 
@@ -26,7 +26,6 @@ bot_translate = gettext.translation(appname, localedir, fallback=False, language
 bot_translate.install(names=['ngettext'])
 
 DISCORD_MAX_CHAR = 2000
-
 
 @dataclass
 class User:
@@ -45,9 +44,10 @@ class User:
 class UserHandler(commands.Cog):
     """Handles all the info we get from the user log files"""
 
-    def __init__(self, bot, logPath):
+    def __init__(self, bot, logPath, dataPath):
         self.bot = bot
         self.logPath = logPath
+        self.dataPath = dataPath
         self.lastUpdateTimestamp = datetime.now()
         self.users = {}
         self.notifyDisconnect = os.getenv("DISCONNECTS", "True") == "True"
@@ -154,14 +154,33 @@ class UserHandler(commands.Cog):
             matches = re.search(r"\"(.*)\".*\((\d+),(\d+),\d+\)", message)
             name = matches.group(1)
             user = self.getUser(name)
+            avatar = None
             if timestamp > user.lastSeen:
                 user.online = False
                 user.lastSeen = timestamp
                 user.lastLocation = (matches.group(2), matches.group(3))
             if timestamp > self.lastUpdateTimestamp:
                 self.bot.log.info(f"{user.name} disconnected")
+                
+                if os.getenv("DEBUG"): # debug show the username who disconnect
+                    self.bot.log.info(f"USERNAME: {user.name.lower()}")
+                
                 if self.notifyDisconnect:
-                    return modules.embed.leave(timestamp, user.name)
+                    for member in self.bot.get_all_members():
+                        if os.getenv("DEBUG"): # debug show discord channel member
+                            self.bot.log.info(f"DISCORD MEMBER: {member}")
+                        if user.name.lower() in member.name:
+                            avatar = member.display_avatar
+                            if os.getenv("DEBUG"): # degug show the username match with discord
+                                self.bot.log.info(f"--------MATCH--------") 
+                        else:
+                            if os.getenv("DEBUG"): # degug show their is no match with discord
+                                self.bot.log.info(f"no match")
+                    if os.getenv("DEBUG"): # degug show avatar url
+                        self.bot.log.info(f"avatarurl {avatar}")
+                        
+                    modules.serverData.UserStatus.isOffline(self, self.dataPath, user.name)
+                    return modules.embed.leave(timestamp, user.name, avatar)
 
         elif "fully connected" in message:
             matches = re.search(r"\"(.*)\".*\((\d+),(\d+)", message)

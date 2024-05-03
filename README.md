@@ -2,24 +2,34 @@
 
 A discord bot for Project Zomboid. 
 
-Initialy forked from https://github.com/JonnyPtn/zomboi/tree/master
-
-You are welcome to [log](https://github.com/buttsbucket/zomboi_bot/issues) any issues, questions, or feature suggestions you have
+You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues) any issues, questions, or feature suggestions you have
 
 ## Features
+- Beautiful Discord embed
+- Multilingual (only bot messages sent to Discord are currently translatable)
+  - Currently available in french and english
+  - Feel free to provide your translated files!
+  - Original .pot file for translating is in the locales directory
 - Mirror in-game chat messages to discord channel using linked discord name/avatar
 - Notifications for logins, disconnects, deaths and perk changes
-- Presence shows number of players currently online
+- Bot presence shows number of players currently online with plural support
 - View and change server options
-- Request a map showing a players location
+- Request a map showing a players location (currently only work with vanilla map. no modded map support)
 - [Skills Recovery Journal mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2503622437) support
 - Option to hide / display the timestamp
-- Option to show the chat with discord embed or not
+- Option to show the in-game chat with discord embed or not
+- Compatible with server connected to Steam (not compatible with GOG (and will never be...))
 
 ## TO DO
-- Multilingual (currently only available in french... English available soon)
-- Make bot commands multilingual. 
-- Update the MapHandler to support modded map (if possible)
+- Prevent people who reading Skills Recovery Journal to flood the discord channel with their skills upgrades (top priority)
+- Options to choose witch data to send in the admin channel
+- Make bot commands responses multilingual
+- Better bot commands/responses
+  - store users data per steamid to make !info and !users better
+- Add other embed display options
+- Ability to check for mods updates and if needed message the users and restart the server
+- Send server online/offline message to the discord channel
+- Update the MapHandler to support modded map (if possible and not before PZ build 42)(low priority)
 
 ## Commands (prefix: `!`):
 ```
@@ -35,7 +45,8 @@ No Category:
 ```
 
 ## Requirements
-Python 3.8 and above should work
+- Python 3.9 and above should work
+- Project Zomboid server / PzPy need to run on a Linux dedicated server/vps(tested with Ubuntu)(not tested on Windows)
 
 To install dependencies:
 `pip install -r requirements.txt`
@@ -50,5 +61,12 @@ This bot works by monitoring the log files produced by the game, so must be run 
 To run:
 `python PzPy.py`
 
+
 It may be a good idea to run as a service, especially on a dedicated server
 
+## Credits
+
+- Initialy forked from [Zomboi](https://github.com/JonnyPtn/zomboi/tree/master)
+
+## NOTICE
+I'm not an expert programmer.... I program in my spare time for fun and I learn everything by myself.... I'm (not) sorry to the purists if the code is not optimal. But at least it works and I have fun making it :-)

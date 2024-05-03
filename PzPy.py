@@ -14,6 +14,7 @@ from modules.admin import AdminLogHandler
 from modules.rcon_adapter import RCONAdapter
 import modules.embed
 import gettext
+load_dotenv(override=True)
 
 #setup gettext
 appname = 'zomboid_bot'
@@ -21,10 +22,6 @@ localedir = os.getenv("LANGUAGE_DIR")
 language= os.getenv("BOT_LANGUAGE")
 bot_translate = gettext.translation(appname, localedir, fallback=False, languages=[language])
 bot_translate.install(names=['ngettext'])
-
-load_dotenv(override=True)
-
-logPath = os.getenv("LOGS_PATH")
 
 
 
@@ -35,64 +32,74 @@ if logPath is None or len(logPath) == 0:
     if path.exists():
         logPath = str(path)
     else:
-        logging.error("Zomboid log path not set and unable to find default")
+        logging.error("Zomboid log path not set and/or unable to find default")
         exit()
+        
+# Verify the users data directory path
+dataPath = os.getenv("DATA_PATH")
+if dataPath is None or len(dataPath) == 0:
+    path = Path.cwd().joinpath("data")
+    if path.exists():
+        dataPath = str(path)
+    else:
+        logging.error("Users data path not set and/or unable to find default")
+        exit()        
 
 # Our main bot object
 intents = discord.Intents.default()
 intents.members = True
 intents.guilds = True
 intents.message_content = True
-zomboi = commands.bot.Bot("!", intents=intents)
+PzPy = commands.bot.Bot("!", intents=intents)
 
 # Redirect the discord log to a file
 logFormat = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s: %(message)s")
 discordLogger = logging.getLogger("discord")
 discordLogger.setLevel(logging.DEBUG)
-handler = logging.FileHandler(filename="discord.log", encoding="utf-8", mode="w")
+handler = logging.FileHandler(filename="logs/discord.log", encoding="utf-8", mode="w")
 handler.setFormatter(logFormat)
 discordLogger.addHandler(handler)
 
 # set up our logging
-zomboi.log = logging.getLogger("zomboi")
+PzPy.log = logging.getLogger("PzPy")
 handler = logging.StreamHandler()
 handler.setFormatter(logFormat)
 handler.setLevel(logging.INFO)
-zomboi.log.addHandler(handler)
-handler = logging.FileHandler(filename="zomboi.log")
+PzPy.log.addHandler(handler)
+handler = logging.FileHandler(filename="logs/PzPy.log")
 handler.setFormatter(logFormat)
 handler.setLevel(logging.DEBUG)
-zomboi.log.addHandler(handler)
-zomboi.log.setLevel(logging.DEBUG)
+PzPy.log.addHandler(handler)
+PzPy.log.setLevel(logging.DEBUG)
 
 
-@zomboi.event
+@PzPy.event
 async def on_ready():
-    zomboi.log.info(f"We have logged in as {zomboi.user}")
+    PzPy.log.info(f"We have logged in as {PzPy.user}")
     channel = os.getenv("CHANNEL")
-    zomboi.channel = (  # Find by id
-        zomboi.get_channel(int(channel)) if channel.isdigit() else None
+    PzPy.channel = (  # Find by id
+        PzPy.get_channel(int(channel)) if channel.isdigit() else None
     )
-    if zomboi.channel is None:
-        zomboi.channel = discord.utils.get(
-            zomboi.get_all_channels(), name=channel
+    if PzPy.channel is None:
+        PzPy.channel = discord.utils.get(
+            PzPy.get_all_channels(), name=channel
         )  # find by name
-    if zomboi.channel is None:
-        zomboi.log.warning("Unable to get channel, will not be enabled")
+    if PzPy.channel is None:
+        PzPy.log.warning("Unable to get channel, will not be enabled")
     else:
-        zomboi.log.info("channel connected")
-    await zomboi.add_cog(UserHandler(zomboi, logPath))
-    await zomboi.add_cog(ChatHandler(zomboi, logPath))
-    await zomboi.add_cog(PerkHandler(zomboi, logPath))
-    await zomboi.add_cog(RCONAdapter(zomboi))
-    await zomboi.add_cog(MapHandler(zomboi))
-    await zomboi.add_cog(AdminLogHandler(zomboi, logPath))
+        PzPy.log.info("channel connected")
+    await PzPy.add_cog(UserHandler(PzPy, logPath, dataPath))
+    await PzPy.add_cog(ChatHandler(PzPy, logPath))
+    await PzPy.add_cog(PerkHandler(PzPy, logPath, dataPath))
+    await PzPy.add_cog(RCONAdapter(PzPy))
+    await PzPy.add_cog(MapHandler(PzPy))
+    await PzPy.add_cog(AdminLogHandler(PzPy, logPath))
 
 
 # Always finally run the bot
 token = os.getenv("DISCORD_TOKEN")
 if token is None:
-    zomboi.log.error("DISCORD_TOKEN environment variable not found")
+    PzPy.log.error("DISCORD_TOKEN environment variable not found")
     exit()
 
-zomboi.run(os.getenv("DISCORD_TOKEN"))
+PzPy.run(os.getenv("DISCORD_TOKEN"))
