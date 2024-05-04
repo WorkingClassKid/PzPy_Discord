@@ -88,7 +88,7 @@ class RCONAdapter(commands.Cog):
         response = "".join(response.splitlines(keepends=True)[1:])
 
         # update user info too
-        userHandler = self.bot.get_cog("UserHandler")
+        userHandler = self.bot.get_cog("userReader")
         for user in userHandler.users.values():
             if user.name in response:
                 if user.online == False:

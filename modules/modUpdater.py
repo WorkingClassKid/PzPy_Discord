@@ -32,7 +32,9 @@ class modUpdater(commands.Cog):
             port=self.rconPort,
             passwd=self.rconPassword,
         )
-        self.bot.log.info("COMMAND: checkmodsneedupdate" + f" AUTHOR: {ctx.author}") 
+        self.bot.log.info("COMMAND: checkmodsneedupdate" + f" AUTHOR: {ctx.author}")
+        if "Checking started" in response :
+            await ctx.send(f"Mods Update Check: Started")
     
     # Query the server every 5 mins to see if their is a mod update 
     @tasks.loop(minutes=5)

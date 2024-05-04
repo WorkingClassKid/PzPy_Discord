@@ -41,7 +41,7 @@ class User:
     died: List[datetime] = field(default_factory=lambda: [])
 
 
-class UserHandler(commands.Cog):
+class userReader(commands.Cog):
     """Handles all the info we get from the user log files"""
 
     def __init__(self, bot, logPath, dataPath):

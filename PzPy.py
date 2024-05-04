@@ -1,6 +1,5 @@
 
 # The main file for PzPy bot. Sets up and runs the discord client
-from modules.chat import ChatHandler
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -8,16 +7,19 @@ import logging
 from modules.maps import MapHandler
 import os
 from pathlib import Path
-from modules.perks import PerkHandler
-from modules.users import UserHandler
-from modules.admin import AdminLogHandler
-from modules.rcon_adapter import RCONAdapter
-from modules.modUpdater import modUpdater
-from modules.consoleReader import consoleReader
-import modules.embed
 import gettext
 import coloredlogs, logging
+from modules.perkReader import perkReader
+from modules.userReader import userReader
+from modules.consoleReader import consoleReader
+from modules.chatReader import chatReader
+from modules.modUpdater import modUpdater
+from modules.admin import AdminLogHandler
+from modules.rcon_adapter import RCONAdapter
+import modules.embed
+
 load_dotenv(override=True)
+
 
 #setup gettext
 appname = 'zomboid_bot'
@@ -85,9 +87,9 @@ async def on_ready():
         PzPy.log.warning("Unable to get channel, will not be enabled")
     else:
         PzPy.log.info("channel connected")
-    await PzPy.add_cog(UserHandler(PzPy, logPath, dataPath))
-    await PzPy.add_cog(ChatHandler(PzPy, logPath))
-    await PzPy.add_cog(PerkHandler(PzPy, logPath, dataPath))
+    await PzPy.add_cog(userReader(PzPy, logPath, dataPath))
+    await PzPy.add_cog(chatReader(PzPy, logPath))
+    await PzPy.add_cog(perkReader(PzPy, logPath, dataPath))
     await PzPy.add_cog(RCONAdapter(PzPy))
     await PzPy.add_cog(modUpdater(PzPy))
     await PzPy.add_cog(MapHandler(PzPy))

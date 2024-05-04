@@ -1,5 +1,7 @@
 (dev)
 ----------
+- Renamed and fixed the file reader (IN PROGRESS)
+  - Fixed: With the old zomboi code, it only read the last line of the file. Unefficient to read the server-console.txt and other files with PZ server with a lot of users
 - Better permission control for who can control the bot for futur roles support. (IN PROGRESS)
   - discord admin username are stored in data/bot.admins file
   - Add your discord username (in lowercase) in the data/bot.admins file to get the initial admin privilege
