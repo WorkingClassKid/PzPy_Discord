@@ -87,7 +87,7 @@ class PerkHandler(commands.Cog):
         if timestamp > user.lastSeen:
             user.lastSeen = timestamp
             user.lastLocation = (x, y)
-
+        avatar = "https://raw.githubusercontent.com/WorkingClassKid/Divers/master/BrawlerSpiffo.png"
         # Then the message type, can be "Died", "Login", "Level Changed" or a list of perks
         type, message = message.split("]", 1)
 
@@ -194,6 +194,7 @@ class PerkHandler(commands.Cog):
                             self.bot.log.debug(f"--------MATCH--------") # degug show the username match with discord
                         else:
                             self.bot.log.debug(f"no match") # degug show their is no match with discord
+                    
                     self.bot.log.debug(f"avatarurl {avatar}")  # degug show avatar url
                         
                     return modules.embed.perk(

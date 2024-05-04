@@ -154,7 +154,7 @@ class UserHandler(commands.Cog):
             matches = re.search(r"\"(.*)\".*\((\d+),(\d+),\d+\)", message)
             name = matches.group(1)
             user = self.getUser(name)
-            avatar = None
+            avatar = "https://raw.githubusercontent.com/WorkingClassKid/Divers/master/BrawlerSpiffo.png"
             if timestamp > user.lastSeen:
                 user.online = False
                 user.lastSeen = timestamp

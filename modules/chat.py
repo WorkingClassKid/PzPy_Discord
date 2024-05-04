@@ -55,7 +55,7 @@ class ChatHandler(commands.Cog):
         # Mirror any other received messages in the discord chat
         pattern = r"] Message.*author=\'(.*)\', text=\'(.*)\'"
         match = re.search(pattern, message)
-
+        avatar = "https://raw.githubusercontent.com/WorkingClassKid/Divers/master/BrawlerSpiffo.png"
         if match and self.bot.channel is not None:
             # Use a webhook to make it look like we're the discord member
             # God bless stack overflow
@@ -67,24 +67,19 @@ class ChatHandler(commands.Cog):
                 self.webhook = await self.bot.channel.create_webhook(name="PzPy")
 
             name = match.group(1).lower()
-            if os.getenv("DEBUG"): # degug show the username of people who write in the chat
-                self.bot.log.info(f"CHAT USERNAME: {name}")
+            self.bot.log.debug(f"CHAT USERNAME: {name}") # degug show the username of people who write in the chat
             avatar_url = None
             EmbedChat = os.getenv("EMBED_CHAT")
             for member in self.bot.get_all_members():
-                if os.getenv("DEBUG"): # debug show discord channel member
-                    self.bot.log.info(f"DISCORD MEMBER: {member}")
+                self.bot.log.debug(f"DISCORD MEMBER: {member}") # debug show discord channel member
                 
                 if name in member.name:
                     avatar_url = member.display_avatar
-                    if os.getenv("DEBUG"): # degug show the username match with discord
-                        self.bot.log.info(f"--------MATCH--------") 
+                    self.bot.log.debug(f"--------MATCH--------") # degug show the username match with discord
                 else:
-                    if os.getenv("DEBUG"): # degug show their is no match with discord
-                        self.bot.log.info(f"no match") 
+                    self.bot.log.debug(f"no match") # degug show their is no match with discord
             if EmbedChat == "yes":
-                if os.getenv("DEBUG"): # degug show avatar url
-                    self.bot.log.info(f"avatarurl {avatar_url}")
+                self.bot.log.debug(f"avatarurl {avatar_url}") # degug show avatar url
                 await self.webhook.send(
                     embed=modules.embed.chat_message(timestamp, match.group(1), avatar_url, match.group(2)),
                     username=match.group(1), 
@@ -97,5 +92,4 @@ class ChatHandler(commands.Cog):
                     username=match.group(1), 
                     avatar_url=avatar_url
                 )
-                
-           
+            

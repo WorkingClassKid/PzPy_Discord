@@ -56,19 +56,15 @@ PzPy = commands.bot.Bot("!", intents=intents)
 # Redirect the discord log to a file
 logFormat = logging.Formatter(os.getenv("COLOREDLOGS_LOG_FORMAT"))
 discordLogger = logging.getLogger("discord")
-discordLogger.setLevel(logging.DEBUG)
-handler = logging.FileHandler(filename="logs/discord.log", encoding="utf-8", mode="w")
-handler.setFormatter(logFormat)
-discordLogger.addHandler(handler)
+discordHandler = logging.FileHandler(filename="logs/discord.log", encoding="utf-8", mode="w")
+discordHandler.setFormatter(logFormat)
+discordLogger.addHandler(discordHandler)
 
 # set up our logging
 PzPy.log = logging.getLogger("PzPy")
 coloredlogs.install(level=os.getenv("LOG_LEVEL"), logger=PzPy.log)
-handler = logging.FileHandler(filename="logs/PzPy.log")
-handler.setFormatter(logFormat)
-handler.setLevel(logging.DEBUG)
-PzPy.log.addHandler(handler)
-PzPy.log.setLevel(logging.DEBUG)
+PzPyHandler = logging.FileHandler(filename="logs/PzPy.log")
+PzPy.log.addHandler(PzPyHandler)
 
 
 

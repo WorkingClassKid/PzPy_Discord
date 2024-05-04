@@ -55,6 +55,9 @@ To install dependencies:
 Configuration can be specified using environment variables, which can also be declared using an environment file named `.env`.
 Sample configuration is provided in a file named `sample.env`. You can copy this file, name it `.env` and change the values to suit your environment.
 
+#### Add yourself as an admin
+- Edit the data/bot.admins file and add your discord username (in lowercase) in the file
+
 ## Running the bot
 This bot works by monitoring the log files produced by the game, so must be run on the same machine as the server/host
 
