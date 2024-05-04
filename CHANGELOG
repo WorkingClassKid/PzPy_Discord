@@ -3,21 +3,24 @@
 - Better permission control for who can control the bot for futur roles support. (IN PROGRESS)
   - discord admin username are stored in data/bot.admins file
   - Add your discord username (in lowercase) in the data/bot.admins file to get the initial admin privilege
-- Added a lot of debug level logging to track issues / problems easily 
+- consoleReader.py module to read the server-console.txt file
+- modUpdater.py module to check if any mod updates available
+- Added: a lot of debug level logging to track issues / problems easily 
 - Better logging with color for easy tracking
   - Logging level can be adjusted in the .env configuration file (config variable: LOG_LEVEL)
-- Added python-steam-api==2.0 as requirement
-- Added coloredlogs==15.0.1 as requirement
-- Fixed a bug when no username and discord username match
+- Added: python-steam-api==2.0 as requirement
+- Added: coloredlogs==15.0.1 as requirement
+- Fixed: a bug when no username and discord username match
   - Added a default user icon when no match was found.
+- Fixed: when user die, no embed is sent to discord
  
 0.1.1 (stable)
 ----------
 - Multilingual support (config variable: BOT_LANGUAGE) (possible value: en/fr)
-- Fixed a lot of little things
+- Fixed: a lot of little things
 - Better discord embed
-- Added an option to disable timestamp on discord embed (config variable: SHOW_TIMESTAMP)
-- Added an option to disable discord embed on chat relay (config variable: EMBED_CHAT)
+- Added: an option to disable timestamp on discord embed (config variable: SHOW_TIMESTAMP)
+- Added: an option to disable discord embed on chat relay (config variable: EMBED_CHAT)
 - New directory and file structure
 - Online users are now logged in data/online.users with their username and steamid (username:steamid)
 - Offline users are removed from data/online.users when they quit

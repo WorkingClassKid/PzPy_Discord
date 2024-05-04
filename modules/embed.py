@@ -121,10 +121,10 @@ def death(timestamp: datetime, user: str, aka: str, avatar, hours: int) -> Embed
     """Dark embed to indicate a user's/character's death"""
     message = f"{aka} " + _("DIED_MESSAGE")
     if os.getenv("SHOW_TIMESTAMP") == "yes":
-        embed=Embed(timestamp=timestamp, description=message, color=Colour.dark_embed())
+        embed=Embed(timestamp=timestamp, description=message, color=Colour.darker_grey())
                 
     else:
-        embed=Embed(timestamp=None, description=message, color=Colour.dark_embed())
+        embed=Embed(timestamp=None, description=message, color=Colour.darker_grey())
     #embed additionnal field
     embed.set_author(name=user, icon_url=avatar)
     embed.add_field(name=_("HOURS_SURVIVED"), value=hours, inline=True)

@@ -191,7 +191,7 @@ class UserHandler(commands.Cog):
         else:
             # Ignore but mirror log if it's new
             if timestamp > self.lastUpdateTimestamp:
-                self.bot.log.debug(f"Ignored: {message}")
+                self.bot.log.debug(f"users.py : Ignored: {message}")
 
     @commands.command()
     async def users(self, ctx, arg: str = None):

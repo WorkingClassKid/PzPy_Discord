@@ -12,6 +12,8 @@ from modules.perks import PerkHandler
 from modules.users import UserHandler
 from modules.admin import AdminLogHandler
 from modules.rcon_adapter import RCONAdapter
+from modules.modUpdater import modUpdater
+from modules.consoleReader import consoleReader
 import modules.embed
 import gettext
 import coloredlogs, logging
@@ -87,8 +89,10 @@ async def on_ready():
     await PzPy.add_cog(ChatHandler(PzPy, logPath))
     await PzPy.add_cog(PerkHandler(PzPy, logPath, dataPath))
     await PzPy.add_cog(RCONAdapter(PzPy))
+    await PzPy.add_cog(modUpdater(PzPy))
     await PzPy.add_cog(MapHandler(PzPy))
     await PzPy.add_cog(AdminLogHandler(PzPy, logPath))
+    await PzPy.add_cog(consoleReader(PzPy, logPath, dataPath))
 
 
 # Always finally run the bot
