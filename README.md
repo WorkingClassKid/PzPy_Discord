@@ -10,6 +10,15 @@ You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues)
   - Currently available in french and english
   - Feel free to provide your translated files!
   - Original .pot file for translating is in the locales directory
+- Automatic mod updater available.
+  - Can check if mods need to be updated every 5 mins
+  - Send notification to the bot discord admin channel.
+  - Save & Quit the server after 5 mins if mods updates are availables
+  - Message the user (5 mins, 3 mins and 1mins) on the server using the servermsg command. (Use the mod Unread Chat Notification + Classic IM Sound to be sure every users get the notifications)
+  - Last warning 10 seconds before
+  - Kick the remaining user out
+  - Save and quit the server
+  - Restart the server using a bash script (you need your own restart/monitor script).
 - Mirror in-game chat messages to discord channel using linked discord name/avatar
 - Notifications for logins, disconnects, deaths and perk changes
 - Bot presence shows number of players currently online with plural support

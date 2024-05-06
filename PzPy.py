@@ -1,14 +1,20 @@
-
+from pathlib import Path
+import os
+import logging
+import coloredlogs, logging
+# Verify if configuratin exist
+path = Path.cwd().joinpath(".env")
+isFile = os.path.isfile(path)
+if not isFile:
+    logging.error("PzPy.py : ERROR : Unable to find the configuration file (.env). Edit sample.env and rename it to .env.")
+    exit()
+ 
 # The main file for PzPy bot. Sets up and runs the discord client
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
-import logging
 from modules.maps import MapHandler
-import os
-from pathlib import Path
 import gettext
-import coloredlogs, logging
 from modules.perkReader import perkReader
 from modules.userReader import userReader
 from modules.consoleReader import consoleReader
@@ -37,7 +43,7 @@ if logPath is None or len(logPath) == 0:
     if path.exists():
         logPath = str(path)
     else:
-        logging.error("Zomboid log path not set and/or unable to find default")
+        logging.error("PzPy.py : ERROR : Zomboid log path not set and/or unable to find default")
         exit()
         
 # Verify the users data directory path
@@ -47,7 +53,7 @@ if dataPath is None or len(dataPath) == 0:
     if path.exists():
         dataPath = str(path)
     else:
-        logging.error("Users data path not set and/or unable to find default")
+        logging.error("PzPy.py : ERROR : Users data path not set and/or unable to find default")
         exit()        
 
 # Our main bot object
@@ -70,11 +76,10 @@ coloredlogs.install(level=os.getenv("LOG_LEVEL"), logger=PzPy.log)
 PzPyHandler = logging.FileHandler(filename="logs/PzPy.log")
 PzPy.log.addHandler(PzPyHandler)
 
-
-
+   
 @PzPy.event
 async def on_ready():
-    PzPy.log.info(f"We have logged in as {PzPy.user}")
+    PzPy.log.info(f"PzPy.py : We have logged in as {PzPy.user}")
     channel = os.getenv("CHANNEL")
     PzPy.channel = (  # Find by id
         PzPy.get_channel(int(channel)) if channel.isdigit() else None
@@ -84,9 +89,10 @@ async def on_ready():
             PzPy.get_all_channels(), name=channel
         )  # find by name
     if PzPy.channel is None:
-        PzPy.log.warning("Unable to get channel, will not be enabled")
+        PzPy.log.warning("PzPy.py : ERROR : Unable to get channel, will not be enabled")
     else:
-        PzPy.log.info("channel connected")
+        PzPy.log.info("PzPy.py : channel connected")
+    
     await PzPy.add_cog(userReader(PzPy, logPath, dataPath))
     await PzPy.add_cog(chatReader(PzPy, logPath))
     await PzPy.add_cog(perkReader(PzPy, logPath, dataPath))
@@ -100,7 +106,7 @@ async def on_ready():
 # Always finally run the bot
 token = os.getenv("DISCORD_TOKEN")
 if token is None:
-    PzPy.log.error("DISCORD_TOKEN environment variable not found")
+    PzPy.log.error("PzPy.py : ERROR : DISCORD_TOKEN environment variable not found")
     exit()
 
 PzPy.run(os.getenv("DISCORD_TOKEN"))

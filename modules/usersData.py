@@ -14,9 +14,9 @@ class UsersData():
     def createUserDir(self, dataPath, steamid):
         dataPath = os.path.join(dataPath, steamid)
         if not os.path.exists(dataPath):
-            self.bot.log.warning(f"DATA directory is missing: {dataPath} . We will create it")
+            self.bot.log.warning(f"userData.py : ERROR : user data directory is missing: {dataPath} . We will create it")
             os.makedirs(dataPath)
         if not os.path.exists(dataPath):
-            self.bot.log.error(f"ERROR: DATA directory is missing: {dataPath} . Unable to create it")
+            self.bot.log.error(f"userData.py : ERROR : user data directory is missing: {dataPath} . Unable to create it")
         else:
-            self.bot.log.info(f"DATA directory exist: {dataPath}")
+            self.bot.log.info(f"userData.py : user data directory exist: {dataPath}")
