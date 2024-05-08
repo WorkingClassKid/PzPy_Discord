@@ -6,6 +6,8 @@
   - discord admin username are stored in data/bot.admins file
   - Add your discord username (in lowercase) in the data/bot.admins file to get the initial admin privilege
 - consoleReader.py module to read the server-console.txt file
+- Disconnect from the server will now be managed by consoleReader.py. 
+  -It will solve the issue when a user die and leave the game to create a new character, the userReader.py was sending a disconnection notice even if the user is still connected to server for the creation of his/her new character.
 - modUpdater.py module to check if any mod updates available
   - Can check if mods need upgrade every 5 mins
   - Send notification to the bot discord admin channel
@@ -14,7 +16,8 @@
   - Message the user (5mins, 3 mins, 1mins) on the server using the servermsg command. (Use the mod Unread Chat Notification + Classic IM Sound to be sure every users get the notifications)
   - Last warning and kick the remaining user out
   - Save and quit the server
-  - Restart the server using a bash script (you need your own restart/monitor script). Can be configured with the MOD_UPDATE_REBOOT_SCRIPT variable in the configuration.  
+  - Restart the server using a bash script (you need your own restart/monitor script). Can be configured with the MOD_UPDATE_REBOOT_SCRIPT variable in the configuration.
+- User steamid are now stored in the file steamid in the user data directory (data/USERNAME/)  
 - Added: a lot of debug level logging to track issues / problems easily 
 - Better logging with color for easy tracking
   - Logging level can be adjusted in the .env configuration file (config variable: LOG_LEVEL)
@@ -34,5 +37,5 @@
 - New directory and file structure
 - Online users are now logged in data/online.users with their username and steamid (username:steamid)
 - Offline users are removed from data/online.users when they quit
-- Automaticaly create a directory (named after the steamid of the user) for the users futur data/stats/infos in the data directory at their first login
+- Automaticaly create a directory for the users futur data/stats/infos in the data directory at their first login
 - Completed the migration/reorganization from zomboi core to PzPy

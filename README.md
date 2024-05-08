@@ -30,13 +30,13 @@ You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues)
 - Compatible with server connected to Steam (not compatible with GOG (and will never be...))
 
 ## TO DO
+- Log Extender mod complete support
 - Prevent people who reading Skills Recovery Journal to flood the discord channel with their skills upgrades (top priority)
 - Options to choose witch data to send in the admin channel
 - Make bot commands responses multilingual
 - Better bot commands/responses
   - store users data per steamid to make !info and !users better
 - Add other embed display options
-- Ability to check for mods updates and if needed message the users and restart the server
 - Send server online/offline message to the discord channel
 - Update the MapHandler to support modded map (if possible and not before PZ build 42)(low priority)
 
@@ -55,13 +55,15 @@ No Category:
 
 ## Requirements
 - Python 3.9 and above should work
-- Project Zomboid server / PzPy need to run on a Linux dedicated server/vps(tested with Ubuntu)(not tested on Windows)
+- Project Zomboid server / PzPy need to run on the same Linux dedicated server/vps
+  - Tested on a dedicated server with Ubuntu
+  - not tested on Windows and I will not support Windows. Make your own fork....
 
 To install dependencies:
 `pip install -r requirements.txt`
 
 ## Configuration
-Configuration can be specified using environment variables, which can also be declared using an environment file named `.env`.
+Configuration can be specified with an environment file named `.env`.
 Sample configuration is provided in a file named `sample.env`. You can copy this file, name it `.env` and change the values to suit your environment.
 
 #### Add yourself as an admin

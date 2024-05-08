@@ -123,16 +123,7 @@ class perkReader(commands.Cog):
         elif type == "Login":
             if timestamp > self.lastUpdateTimestamp:
                 user.online = True
-                self.bot.log.info(f"{user.name} login")
-                # On regarde si le repertoire data de l'utilisateur existe, sinon on le créer
-                self.bot.log.info(f"{user.name} DATA Path:" + os.path.join(self.dataPath,steamid))
-                modules.usersData.UsersData.createUserDir(self, self.dataPath, steamid)
-                # We put the user online in data/online.users file
-                modules.serverData.UserStatus.isOnline(self, self.dataPath, user.name, steamid)
-
-
                 self.bot.log.debug(f"LOGIN USERNAME: {user.name.lower()}") # debug show the username who resume is game
-                
                 if self.notifyJoin:
                     # we check in the discord channel for a username match
                     for member in self.bot.get_all_members():
@@ -141,7 +132,7 @@ class perkReader(commands.Cog):
                             
                         if user.name.lower() in member.name:
                             avatar = member.display_avatar
-
+        
                             self.bot.log.debug(f"perkReader.py : Login : --------MATCH--------") # degug show the username match with discord
                                 
                         else:

@@ -154,30 +154,13 @@ class userReader(commands.Cog):
             matches = re.search(r"\"(.*)\".*\((\d+),(\d+),\d+\)", message)
             name = matches.group(1)
             user = self.getUser(name)
-            avatar = "https://raw.githubusercontent.com/WorkingClassKid/Divers/master/BrawlerSpiffo.png"
+            #avatar = "https://raw.githubusercontent.com/WorkingClassKid/Divers/master/BrawlerSpiffo.png"
             if timestamp > user.lastSeen:
                 user.online = False
                 user.lastSeen = timestamp
                 user.lastLocation = (matches.group(2), matches.group(3))
-            if timestamp > self.lastUpdateTimestamp:
-                self.bot.log.info(f"{user.name} disconnected")
-                
-                self.bot.log.debug(f"USERNAME: {user.name.lower()}") # debug show the username who disconnect
-                
-                if self.notifyDisconnect:
-                    for member in self.bot.get_all_members():
-                        self.bot.log.debug(f"DISCORD MEMBER: {member}") # debug show discord channel member
-                        if user.name.lower() in member.name:
-                            avatar = member.display_avatar
-                            self.bot.log.debug(f"--------MATCH--------") # degug show the username match with discord
-                        else:
-                            self.bot.log.debug(f"no match")  # degug show their is no match with discord
-
-                    self.bot.log.debug(f"avatarurl {avatar}") # degug show avatar url
-                        
-                    modules.serverData.UserStatus.isOffline(self, self.dataPath, user.name)
-                    return modules.embed.leave(timestamp, user.name, avatar)
-
+            
+            
         elif "fully connected" in message:
             matches = re.search(r"\"(.*)\".*\((\d+),(\d+)", message)
             name = matches.group(1)
