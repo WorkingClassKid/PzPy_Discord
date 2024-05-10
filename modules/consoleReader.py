@@ -84,7 +84,7 @@ class consoleReader(commands.Cog):
         # MOD UPDATE
         elif "CheckModsNeedUpdate: Mods updated" in message :
             self.bot.log.info(f"consoleReader.py : CheckModsNeedUpdate : All mods are up-to-date")
-            await self.adminChannel.send(f"PzPy : consoleReader.py : CheckModsNeedUpdate : All mods are up-to-date")
+
                 
         elif "CheckModsNeedUpdate: Mods need update" in message :
             self.bot.log.warning(f"consoleReader.py : CheckModsNeedUpdate : One or more mod(s) need to be updated.")
@@ -128,6 +128,10 @@ class consoleReader(commands.Cog):
             #default avatar
             avatar = "https://raw.githubusercontent.com/WorkingClassKid/Divers/master/BrawlerSpiffo.png"
             
+            self.bot.log.info(f"consoleReader.py : disconnection : {message}")
+            modules.serverData.UserStatus.isOffline(self, self.dataPath, username)
+            await self.adminChannel.send(f"PzPy : consoleReader.py : Disconnection : {username} is disconnected")
+            
             if self.notifyDisconnect:
                     for member in self.bot.get_all_members():
                         self.bot.log.debug(f"PzPy : consoleReader.py : DISCORD MEMBER: {member}") # debug show discord channel member
@@ -138,12 +142,10 @@ class consoleReader(commands.Cog):
                             self.bot.log.debug(f"PzPy : consoleReader.py :  no match")  # degug show their is no match with discord
 
                     self.bot.log.debug(f"PzPy : consoleReader.py :  avatarurl : {avatar}") # degug show avatar url
-                        
-                    modules.serverData.UserStatus.isOffline(self, self.dataPath, username)
+                   
                     return modules.embed.leave(timestamp, username, avatar)
                     
-            self.bot.log.info(f"consoleReader.py : disconnection : {message}")
-            await self.adminChannel.send(f"PzPy : consoleReader.py : Disconnection : {username} is disconnected")
+            
             
         # IGNORED MESSAGE    
         else:

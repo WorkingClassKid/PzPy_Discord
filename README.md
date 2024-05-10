@@ -14,7 +14,7 @@ You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues)
   - Can check if mods need to be updated every 5 mins
   - Send notification to the bot discord admin channel.
   - Save & Quit the server after 5 mins if mods updates are availables
-  - Message the user (5 mins, 3 mins and 1mins) on the server using the servermsg command. (Use the mod Unread Chat Notification + Classic IM Sound to be sure every users get the notifications)
+  - Message the user (5 mins, 3 mins and 1 mins) on the server using the servermsg command. (Use the mod Unread Chat Notification + Classic IM Sound to be sure every users get the notifications)
   - Last warning 10 seconds before
   - Kick the remaining user out
   - Save and quit the server
@@ -23,7 +23,6 @@ You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues)
 - Notifications for logins, disconnects, deaths and perk changes
 - Bot presence shows number of players currently online with plural support
 - View and change server options
-- Request a map showing a players location (currently only work with vanilla map. no modded map support)
 - [Skills Recovery Journal mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2503622437) support
 - Option to hide / display the timestamp
 - Option to show the in-game chat with discord embed or not
@@ -42,8 +41,6 @@ You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues)
 
 ## Commands (prefix: `!`):
 ```
-MapHandler:
-  location Get the last known location of the given user
 RCONAdapter:
   option   Show or set the value of a server option
 UserHandler:

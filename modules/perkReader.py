@@ -102,7 +102,7 @@ class perkReader(commands.Cog):
         if type == "Died":
             user.died.append(timestamp)
             if timestamp > self.lastUpdateTimestamp:
-                self.bot.log.info(f"perkReader.py : died : {user.name}")
+                self.bot.log.info(f"perkReader.py : Died : {user.name}")
                 if self.notifyDeath:
                     for member in self.bot.get_all_members():
                         self.bot.log.debug(f"perkReader.py : Died: discord username: {member}") # debug show discord channel member

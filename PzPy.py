@@ -13,8 +13,8 @@ if not isFile:
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
-from modules.maps import MapHandler
 import gettext
+from modules.checkConfig import checkConfigDiscord, checkConfig
 from modules.perkReader import perkReader
 from modules.userReader import userReader
 from modules.consoleReader import consoleReader
@@ -23,7 +23,7 @@ from modules.modUpdater import modUpdater
 from modules.admin import AdminLogHandler
 from modules.rcon_adapter import RCONAdapter
 import modules.embed
-
+import asyncio
 load_dotenv(override=True)
 
 
@@ -35,16 +35,14 @@ bot_translate = gettext.translation(appname, localedir, fallback=False, language
 bot_translate.install(names=['ngettext'])
 
 
+asyncio.run(modules.checkConfig.checkConfig.run())
 
-# Verify the log path
+# Init logPath
 logPath = os.getenv("LOGS_PATH")
 if logPath is None or len(logPath) == 0:
     path = Path.home().joinpath("Zomboid/Logs")
     if path.exists():
         logPath = str(path)
-    else:
-        logging.error("PzPy.py : ERROR : Zomboid log path not set and/or unable to find default")
-        exit()
         
 # Verify the users data directory path
 dataPath = os.getenv("DATA_PATH")
@@ -92,13 +90,13 @@ async def on_ready():
         PzPy.log.warning("PzPy.py : ERROR : Unable to get channel, will not be enabled")
     else:
         PzPy.log.info("PzPy.py : channel connected")
-    
+
+    await PzPy.add_cog(checkConfigDiscord(PzPy))
     await PzPy.add_cog(userReader(PzPy, logPath, dataPath))
     await PzPy.add_cog(chatReader(PzPy, logPath))
     await PzPy.add_cog(perkReader(PzPy, logPath, dataPath))
     await PzPy.add_cog(RCONAdapter(PzPy))
     await PzPy.add_cog(modUpdater(PzPy))
-    await PzPy.add_cog(MapHandler(PzPy))
     await PzPy.add_cog(AdminLogHandler(PzPy, logPath))
     await PzPy.add_cog(consoleReader(PzPy, logPath, dataPath))
 
