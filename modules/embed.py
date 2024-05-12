@@ -134,7 +134,7 @@ def death(timestamp: datetime, user: str, aka: str, avatar, hours: int) -> Embed
 '''
 Skill Recovery Journal
 '''
-def srj(timestamp: datetime, user: str, aka: str, hours: int) -> Embed:
+def srj(timestamp: datetime, user: str, aka: str) -> Embed:
     """Gold embed to indicate a user reading is skill journal"""
     message = _("SRJ_ICON") + _("SRJ_MESSAGE_START") + f" **{user}** {aka} " + _("SRJ_MESSAGE_END")
     return __embedify(os.getenv("SHOW_TIMESTAMP"), timestamp, Colour.gold(), message)

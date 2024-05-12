@@ -21,6 +21,7 @@
 - Added: a lot of debug level logging to track issues / problems easily 
 - Better logging with color for easy tracking
   - Logging level can be adjusted in the .env configuration file (config variable: LOG_LEVEL)
+- checkConfig.py to check some configuration variables are good at startup
 - Added: python-steam-api==2.0 as requirement
 - Added: coloredlogs==15.0.1 as requirement
 - Fixed: a bug when no username and discord username match

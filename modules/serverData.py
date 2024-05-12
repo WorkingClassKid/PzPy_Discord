@@ -29,7 +29,7 @@ class UserStatus():
                 else:
                     self.bot.log.info(f"serverData.py : (online.users) : {username} is offline and should be online. Adjusting....")
                     with open(dataPath, 'a') as file:
-                        file.write(userData)
+                        file.write(f'{userData}\n')
                     with open(dataPath, 'r') as file:
                         content = file.read()
                     if username in content:

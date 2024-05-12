@@ -34,7 +34,7 @@ language= os.getenv("BOT_LANGUAGE")
 bot_translate = gettext.translation(appname, localedir, fallback=False, languages=[language])
 bot_translate.install(names=['ngettext'])
 
-
+#Check the configuration (.env) file data
 asyncio.run(modules.checkConfig.checkConfig.run())
 
 # Init logPath
@@ -44,15 +44,12 @@ if logPath is None or len(logPath) == 0:
     if path.exists():
         logPath = str(path)
         
-# Verify the users data directory path
+# Init dataPath
 dataPath = os.getenv("DATA_PATH")
 if dataPath is None or len(dataPath) == 0:
     path = Path.cwd().joinpath("data")
     if path.exists():
-        dataPath = str(path)
-    else:
-        logging.error("PzPy.py : ERROR : Users data path not set and/or unable to find default")
-        exit()        
+        dataPath = str(path)     
 
 # Our main bot object
 intents = discord.Intents.default()

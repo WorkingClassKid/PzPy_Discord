@@ -104,8 +104,8 @@ class modUpdater(commands.Cog):
             self.bot.log.info("modUpdater.py : CheckModsNeedUpdate : Reboot script found. Trying to use it...")
             subprocess.call(os.getenv("MOD_UPDATE_REBOOT_SCRIPT"))
             
-        self.bot.log.info("modUpdater.py : CheckModsNeedUpdate : Reboot in progress. Sleeping for 2 mins.")
-        await asyncio.sleep(120)
+        self.bot.log.info("modUpdater.py : CheckModsNeedUpdate : Reboot in progress. Sleeping for 4 mins.")
+        await asyncio.sleep(240)
         
         
         

@@ -57,12 +57,26 @@ class checkConfig():
                 logPath = str(logPath)
             else :    
                 exit("PzPy.py : ERROR : Zomboid log path not set and/or unable to find default. Check your configuration file (LOGS_PATH)")
+                
+    # Verify the data path
+    async def checkConfigDataPath(dataPath):
+        if dataPath is None or len(dataPath) == 0:
+            path = Path.cwd().joinpath("data")
+            if path.exists():
+                dataPath = str(path)
+        else:
+            dataPath = Path(dataPath)
+            if dataPath.exists():
+                dataPath = str(dataPath)
+            else :    
+                exit("PzPy.py : ERROR : Unable to find the data directory. Check your configuration file (DATA_PATH)")
 
 
 
     async def run():
         await checkConfig.checkConfigRcon()
         await checkConfig.checkConfigLogPath(os.getenv("LOGS_PATH"))
+        await checkConfig.checkConfigDataPath(os.getenv("DATA_PATH"))
 
     
     
