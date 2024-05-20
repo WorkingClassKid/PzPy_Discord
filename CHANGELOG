@@ -17,6 +17,10 @@
   - Last warning and kick the remaining user out
   - Save and quit the server
   - Restart the server using a bash script (you need your own restart/monitor script). Can be configured with the MOD_UPDATE_REBOOT_SCRIPT variable in the configuration.
+- Better Skill Recovery Journal support
+  - Ignore sending level changes to discord channel when a user is reading a SRJ.
+  - Special thanks to [Chuckleberry-Finn](https://github.com/Chuckleberry-Finn) for updating his mod to help me with this!
+  - User reading a SRJ will be stored in data/srj.reading
 - User steamid are now stored in the file steamid in the user data directory (data/USERNAME/)  
 - Added: a lot of debug level logging to track issues / problems easily 
 - Better logging with color for easy tracking

@@ -66,4 +66,4 @@ class UserStatus():
                         self.bot.log.error(f"serverData.py : (online.users) : {username} is online and should be offline. Failed to adjust")
                     else:
                         self.bot.log.info(f"serverData.py : (online.users) : {username} is now offline")
-                    
+    

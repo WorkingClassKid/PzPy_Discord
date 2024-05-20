@@ -24,20 +24,20 @@ You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues)
 - Bot presence shows number of players currently online with plural support
 - View and change server options
 - [Skills Recovery Journal mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2503622437) support
+  - Ignore sending level changes to discord channel when a user is reading a SRJ.
 - Option to hide / display the timestamp
 - Option to show the in-game chat with discord embed or not
 - Compatible with server connected to Steam (not compatible with GOG (and will never be...))
 
 ## TO DO
 - Log Extender mod complete support
-- Prevent people who reading Skills Recovery Journal to flood the discord channel with their skills upgrades (top priority)
 - Options to choose witch data to send in the admin channel
 - Make bot commands responses multilingual
 - Better bot commands/responses
   - store users data per steamid to make !info and !users better
 - Add other embed display options
 - Send server online/offline message to the discord channel
-- Update the MapHandler to support modded map (if possible and not before PZ build 42)(low priority)
+
 
 ## Commands (prefix: `!`):
 ```
@@ -75,9 +75,10 @@ To run:
 
 It may be a good idea to run as a service, especially on a dedicated server
 
-## Credits
+## Credits / Special Thanks
 
 - Initialy forked from [Zomboi](https://github.com/JonnyPtn/zomboi/tree/master)
+- [Chuckleberry-Finn](https://github.com/Chuckleberry-Finn) for updating his mod ([Skills Recovery Journal mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2503622437))  
 
 ## NOTICE
 I'm not an expert programmer.... I program in my spare time for fun and I learn everything by myself.... I'm (not) sorry to the purists if the code is not optimal. But at least it works and I have fun making it :-)

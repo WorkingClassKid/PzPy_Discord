@@ -100,7 +100,7 @@ class modUpdater(commands.Cog):
         # Reboot script
         isFile = os.path.isfile(os.getenv("MOD_UPDATE_REBOOT_SCRIPT"))
         if isFile:
-            await self.adminChannel.send(f"modUpdater.py : CheckModsNeedUpdate : Reboot script found. Trying to use it...")
+            await self.adminChannel.send(f"PzPy : modUpdater.py : CheckModsNeedUpdate : Reboot script found. Trying to use it...")
             self.bot.log.info("modUpdater.py : CheckModsNeedUpdate : Reboot script found. Trying to use it...")
             subprocess.call(os.getenv("MOD_UPDATE_REBOOT_SCRIPT"))
             

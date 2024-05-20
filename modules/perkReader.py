@@ -1,4 +1,5 @@
-from datetime import datetime
+import time, datetime
+from datetime import datetime, timedelta
 from discord import Embed
 from discord.ext import tasks, commands
 from file_read_backwards import FileReadBackwards
@@ -92,7 +93,7 @@ class perkReader(commands.Cog):
         type, message = message.split("]", 1)
 
         # Skill Recovery Journal FIX
-        if type != "SRJ START READING":
+        if type != "SRJ START READING" and type != "SRJ STOP READING":
             hours = re.search(r"Hours Survived: (\d+)", message).group(1)
             user.hoursAlive = hours
             if int(hours) > int(user.recordHoursAlive):
@@ -177,7 +178,7 @@ class perkReader(commands.Cog):
             if timestamp > self.lastUpdateTimestamp:
                 self.bot.log.info(f"perkReader.py : Level Changed : {user.name} {perk} changed to {level}")
                 self.bot.log.debug(f"perkReader.py : Level Changed : {user.name.lower()}") # debug show the username who changed perk
-                if self.notifyPerk:
+                if self.notifyPerk and not modules.usersData.UsersData.isSrjReading(self, self.dataPath, user.name):
                     for member in self.bot.get_all_members():
                         self.bot.log.debug(f"perkReader.py : Level Changed : discord username : {member}") # debug show discord channel member
                         if user.name.lower() in member.name:
@@ -186,18 +187,28 @@ class perkReader(commands.Cog):
                         else:
                             self.bot.log.debug(f"perkReader.py : Level Changed : no match") # degug show their is no match with discord
                     
-                    self.bot.log.debug(f"perkReader.py : Level Changed : avatarurl {avatar}")  # degug show avatar url
+                        self.bot.log.debug(f"perkReader.py : Level Changed : avatarurl {avatar}")  # degug show avatar url
                         
                     return modules.embed.perk(
                         timestamp, user.name, log_char_string, avatar, perk, level
                     )
-     # Skill Recovery Journal FIX
+                        
+                        
+     # Skill Recovery Journal Support
         elif type == "SRJ START READING":
             if timestamp > self.lastUpdateTimestamp:
-                self.bot.log.info(f"{user.name} Skills Recovery Journal")
+                self.bot.log.info(f"perkReader.py : Skill Recovery Journal : Start : {user.name}")
+                start_timestamp = datetime.now() + timedelta(minutes = 5)
+                start_timestamp = start_timestamp.timestamp()
+                modules.usersData.UsersData.srjStartReading(self, self.dataPath, user.name, start_timestamp)
                 return modules.embed.srj(
                         timestamp, user.name, log_char_string
                     )
+        elif type == "SRJ STOP READING":
+            if timestamp > self.lastUpdateTimestamp:
+                self.bot.log.info(f"perkReader.py : Skill Recovery Journal : Stop : {user.name}")
+                modules.usersData.UsersData.srjStopReading(self, self.dataPath, user.name)
+
         else:
             # Must be a list of perks following a login/player creation
             for name, value in re.findall(r"(\w+)=(\d+)", type):
