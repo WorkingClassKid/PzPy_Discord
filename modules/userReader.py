@@ -41,7 +41,7 @@ class User:
     died: List[datetime] = field(default_factory=lambda: [])
 
 
-class UserHandler(commands.Cog):
+class userReader(commands.Cog):
     """Handles all the info we get from the user log files"""
 
     def __init__(self, bot, logPath, dataPath):
@@ -154,34 +154,13 @@ class UserHandler(commands.Cog):
             matches = re.search(r"\"(.*)\".*\((\d+),(\d+),\d+\)", message)
             name = matches.group(1)
             user = self.getUser(name)
-            avatar = None
+            #avatar = "https://raw.githubusercontent.com/WorkingClassKid/Divers/master/BrawlerSpiffo.png"
             if timestamp > user.lastSeen:
                 user.online = False
                 user.lastSeen = timestamp
                 user.lastLocation = (matches.group(2), matches.group(3))
-            if timestamp > self.lastUpdateTimestamp:
-                self.bot.log.info(f"{user.name} disconnected")
-                
-                if os.getenv("DEBUG"): # debug show the username who disconnect
-                    self.bot.log.info(f"USERNAME: {user.name.lower()}")
-                
-                if self.notifyDisconnect:
-                    for member in self.bot.get_all_members():
-                        if os.getenv("DEBUG"): # debug show discord channel member
-                            self.bot.log.info(f"DISCORD MEMBER: {member}")
-                        if user.name.lower() in member.name:
-                            avatar = member.display_avatar
-                            if os.getenv("DEBUG"): # degug show the username match with discord
-                                self.bot.log.info(f"--------MATCH--------") 
-                        else:
-                            if os.getenv("DEBUG"): # degug show their is no match with discord
-                                self.bot.log.info(f"no match")
-                    if os.getenv("DEBUG"): # degug show avatar url
-                        self.bot.log.info(f"avatarurl {avatar}")
-                        
-                    modules.serverData.UserStatus.isOffline(self, self.dataPath, user.name)
-                    return modules.embed.leave(timestamp, user.name, avatar)
-
+            
+            
         elif "fully connected" in message:
             matches = re.search(r"\"(.*)\".*\((\d+),(\d+)", message)
             name = matches.group(1)
@@ -195,7 +174,7 @@ class UserHandler(commands.Cog):
         else:
             # Ignore but mirror log if it's new
             if timestamp > self.lastUpdateTimestamp:
-                self.bot.log.debug(f"Ignored: {message}")
+                self.bot.log.debug(f"users.py : Ignored : {message}")
 
     @commands.command()
     async def users(self, ctx, arg: str = None):

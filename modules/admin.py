@@ -1,10 +1,10 @@
 from datetime import datetime
 import discord
 from discord.ext import tasks, commands
+from discord import Embed, Colour
 from file_read_backwards import FileReadBackwards
 import glob
 import os
-
 
 class AdminLogHandler(commands.Cog):
     """
@@ -15,6 +15,7 @@ class AdminLogHandler(commands.Cog):
 
     def __init__(self, bot, logPath):
         self.bot = bot
+        bot = bot
         self.logPath = logPath
         self.lastUpdateTimestamp = datetime.now()
         self.sendLogs = os.getenv("ADMIN_LOGS", "True") == "True"
@@ -36,7 +37,8 @@ class AdminLogHandler(commands.Cog):
                 self.bot.get_all_channels(), name=self.adminChannel
             )  # find by name
         self.update.start()
-
+    
+  
     def splitLine(self, line: str) -> tuple[datetime, str]:
         """Split a log line into a timestamp and the remaining message"""
         timestampStr, message = line.strip()[1:].split("]", 1)

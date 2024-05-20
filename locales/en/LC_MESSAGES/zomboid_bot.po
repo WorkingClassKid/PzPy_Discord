@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-02 16:12-0400\n"
-"PO-Revision-Date: 2024-05-02 16:27-0400\n"
+"POT-Creation-Date: 2024-05-05 19:54-0400\n"
+"PO-Revision-Date: 2024-05-05 19:57-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -62,17 +62,33 @@ msgstr " "
 msgid "SRJ_MESSAGE_END"
 msgstr "read is Skill recovery journal"
 
-#: modules/users.py:126
+#: modules/modUpdater.py:26
+msgid "MOD_UPDATER_UPDATE_REQUIRED"
+msgstr "WARNING: Mod update required. The server will restart in 5 mins"
+
+#: modules/modUpdater.py:35
+msgid "MOD_UPDATER_UPDATE_REQUIRED_3MINS"
+msgstr "WARNING: Mod update required. The server will restart in 3 mins"
+
+#: modules/modUpdater.py:45
+msgid "MOD_UPDATER_UPDATE_REQUIRED_1MINS"
+msgstr "WARNING: Mod update required. The server will restart in 1 mins"
+
+#: modules/modUpdater.py:56
+msgid "MOD_UPDATER_UPDATE_REQUIRED_10SEC"
+msgstr "WARNING: Mod update required. The server will restart in 10 SECONDS"
+
+#: modules/userReader.py:126 modules/users.py:126
 msgid "NO_BODY"
 msgstr "no body"
 
-#: modules/users.py:128
+#: modules/userReader.py:128 modules/users.py:128
 msgid "ONE_PLAYER"
 msgid_plural "MANY_PLAYERS"
 msgstr[0] "1 player"
 msgstr[1] "%(num) players"
 
-#: modules/users.py:130
+#: modules/userReader.py:130 modules/users.py:130
 msgid "PLAY_PZ_WITH"
 msgstr "PZ with"
 

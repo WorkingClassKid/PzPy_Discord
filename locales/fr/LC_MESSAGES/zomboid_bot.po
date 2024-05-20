@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-02 16:12-0400\n"
-"PO-Revision-Date: 2024-05-02 16:14-0400\n"
+"POT-Creation-Date: 2024-05-05 19:54-0400\n"
+"PO-Revision-Date: 2024-05-05 19:56-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -49,11 +49,14 @@ msgstr "Surnom"
 
 #: modules/embed.py:104
 msgid "LEFT_MESSAGE"
-msgstr ":person_running: a quitté (et est retourné voir sa mère en pleurant :rofl: )"
+msgstr ""
+":person_running: a quitté (et est retourné voir sa mère en pleurant :rofl: )"
 
 #: modules/embed.py:122
 msgid "DIED_MESSAGE"
-msgstr "a tout donné! Mais l'inévitable est arrivé! :skull_crossbones: :skull_crossbones: "
+msgstr ""
+"a tout donné! Mais l'inévitable est arrivé! :skull_crossbones: :"
+"skull_crossbones: "
 
 #: modules/embed.py:139
 msgid "SRJ_ICON"
@@ -67,17 +70,41 @@ msgstr "  "
 msgid "SRJ_MESSAGE_END"
 msgstr "fait un peu de lecture......."
 
-#: modules/users.py:126
+#: modules/modUpdater.py:26
+msgid "MOD_UPDATER_UPDATE_REQUIRED"
+msgstr ""
+"ATTENTION! Un mod doit être mis-à-jour. Le serveur va redémarrer dans 5 "
+"mins."
+
+#: modules/modUpdater.py:35
+msgid "MOD_UPDATER_UPDATE_REQUIRED_3MINS"
+msgstr ""
+"ATTENTION! Un mod doit être mis-à-jour. Le serveur va redémarrer dans 3 "
+"mins."
+
+#: modules/modUpdater.py:45
+msgid "MOD_UPDATER_UPDATE_REQUIRED_1MINS"
+msgstr ""
+"ATTENTION! Un mod doit être mis-à-jour. Le serveur va redémarrer dans 1 "
+"mins."
+
+#: modules/modUpdater.py:56
+msgid "MOD_UPDATER_UPDATE_REQUIRED_10SEC"
+msgstr ""
+"LAST CALL! Un mod doit être mis-à-jour. Le serveur va redémarrer dans 10 "
+"SECONDES"
+
+#: modules/userReader.py:126 modules/users.py:126
 msgid "NO_BODY"
 msgstr "personne"
 
-#: modules/users.py:128
+#: modules/userReader.py:128 modules/users.py:128
 msgid "ONE_PLAYER"
 msgid_plural "MANY_PLAYERS"
 msgstr[0] "1 joueur"
 msgstr[1] "%(num)d joueurs"
 
-#: modules/users.py:130
+#: modules/userReader.py:130 modules/users.py:130
 msgid "PLAY_PZ_WITH"
 msgstr "PZ avec"
 
@@ -115,4 +142,6 @@ msgstr "PZ avec"
 #~ msgstr " "
 
 #~ msgid "LEVEL_UP_MESSAGE"
-#~ msgstr "f\":bar_chart: {log_char_string} (**{user.name}**) a atteint {perk} niveau {level}\""
+#~ msgstr ""
+#~ "f\":bar_chart: {log_char_string} (**{user.name}**) a atteint {perk} "
+#~ "niveau {level}\""
