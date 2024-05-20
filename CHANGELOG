@@ -1,10 +1,5 @@
-(dev)
-----------
-- Renamed and fixed the file reader (IN PROGRESS)
-  - Fixed: With the old zomboi code, it only read the last line of the file. Unefficient to read the server-console.txt and other files with PZ server with a lot of users
-- Better permission control for who can control the bot for futur roles support. (IN PROGRESS)
-  - discord admin username are stored in data/bot.admins file
-  - Add your discord username (in lowercase) in the data/bot.admins file to get the initial admin privilege
+0.1.2 (stable)
+----------  
 - consoleReader.py module to read the server-console.txt file
 - Disconnect from the server will now be managed by consoleReader.py. 
   -It will solve the issue when a user die and leave the game to create a new character, the userReader.py was sending a disconnection notice even if the user is still connected to server for the creation of his/her new character.
@@ -32,7 +27,7 @@
   - Added a default user icon when no match was found.
 - Fixed: when user die, no embed is sent to discord
  
-0.1.1 (stable)
+0.1.1
 ----------
 - Multilingual support (config variable: BOT_LANGUAGE) (possible value: en/fr)
 - Fixed: a lot of little things

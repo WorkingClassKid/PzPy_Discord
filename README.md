@@ -78,7 +78,7 @@ It may be a good idea to run as a service, especially on a dedicated server
 ## Credits / Special Thanks
 
 - Initialy forked from [Zomboi](https://github.com/JonnyPtn/zomboi/tree/master)
-- [Chuckleberry-Finn](https://github.com/Chuckleberry-Finn) for updating his mod ([Skills Recovery Journal mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2503622437))  
+- [Chuckleberry-Finn](https://github.com/Chuckleberry-Finn) for adding my request to his mod ([Skills Recovery Journal mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2503622437))  
 
 ## NOTICE
 I'm not an expert programmer.... I program in my spare time for fun and I learn everything by myself.... I'm (not) sorry to the purists if the code is not optimal. But at least it works and I have fun making it :-)
