@@ -68,7 +68,7 @@ discordLogger.addHandler(discordHandler)
 # set up our logging
 PzPy.log = logging.getLogger("PzPy")
 coloredlogs.install(level=os.getenv("LOG_LEVEL"), logger=PzPy.log)
-PzPyHandler = logging.FileHandler(filename="logs/PzPy.log")
+PzPyHandler = logging.FileHandler(filename="logs/PzPy.log", encoding="utf-8", mode="w")
 PzPy.log.addHandler(PzPyHandler)
 
    
@@ -93,7 +93,7 @@ async def on_ready():
     await PzPy.add_cog(chatReader(PzPy, logPath))
     await PzPy.add_cog(perkReader(PzPy, logPath, dataPath))
     await PzPy.add_cog(RCONAdapter(PzPy))
-    await PzPy.add_cog(modUpdater(PzPy))
+    await PzPy.add_cog(modUpdater(PzPy, dataPath))
     await PzPy.add_cog(AdminLogHandler(PzPy, logPath))
     await PzPy.add_cog(consoleReader(PzPy, logPath, dataPath))
 

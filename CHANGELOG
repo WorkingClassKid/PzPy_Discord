@@ -1,3 +1,13 @@
+(dev)
+----------
+- Renamed and fixed the file reader (IN PROGRESS)
+  - Fixed: With the old zomboi code, it only read the last line of the file. Unefficient to read the server-console.txt and other files with PZ server with a lot of users
+- Better permission control for who can control the bot for futur roles support. (IN PROGRESS)
+  - discord admin username are stored in data/bot.admins file
+  - Added the BOT_OWNER configuration variable to define the bot owner
+- Fixed: User reading a Skill Recovery Journal sometime make the bot stuck
+
+
 0.1.2 (stable)
 ----------  
 - consoleReader.py module to read the server-console.txt file

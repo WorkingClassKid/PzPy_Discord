@@ -8,6 +8,7 @@ class UsersData():
     def __init__(self, bot, logPath):
         self.bot = bot
         self.logPath = logPath
+        self.botOwner = os.getenv("BOT_OWNER")
         
     
     # createUserDir
@@ -34,6 +35,25 @@ class UsersData():
             self.bot.log.error(f"userData.py : ERROR : steamid file for {username} is missing: {steamidPath} . Unable to create it")
         else:
             self.bot.log.info(f"userData.py : steamid file for {username} exist: {steamidPath}")
+            
+    # isAdmin
+    # Check if a user is a bot administrator 
+    # Return True or False
+    def isAdmin(self, dataPath, username):
+        dataPath = os.path.join(dataPath, "bot.admins")
+        username = username
+        # we check if the bot.admins file exist. if not we will create it
+        if not os.path.isfile(dataPath):
+            self.bot.log.error(f"userData.py : isAdmin : bot.admins file is missing:: {dataPath} .")
+            return False
+        else:
+          # we check if the username is in the bot.admins file
+            with open(dataPath, 'r') as file:
+                content = file.read()
+                if username in content or username == self.botOwner:
+                    return True
+                else:
+                    return False
 
     # srjStartReading
     # Add user in data/srj.reading file when user start reading a skill recovery journal

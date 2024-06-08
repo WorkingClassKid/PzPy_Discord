@@ -5,13 +5,16 @@ import os
 from rcon.source import Client, rcon
 import re
 from datetime import datetime
+import modules.usersData
 import asyncio
 import subprocess   
 
 class modUpdater(commands.Cog):
 
-    def __init__(self, bot):
+    def __init__(self, bot, dataPath):
         self.bot = bot
+        self.dataPath = dataPath
+        self.botOwner = os.getenv("BOT_OWNER")
         self.checkmodsupdate.start()
    
     # startUpdate
@@ -112,17 +115,19 @@ class modUpdater(commands.Cog):
     # checkmodsneedupdate
     # Bot command to check manually for mods update and restart the server if needed
     @commands.command()
-    @has_permissions(administrator=True)
     async def checkmodsneedupdate(self, ctx):
-        response = await rcon(
-            "checkModsNeedUpdate",
-            host=os.getenv("RCON_HOST"),
-            port=os.getenv("RCON_PORT"),
-            passwd=os.getenv("RCON_PASSWORD"),
-        )
-        self.bot.log.info("modUpdater.py : BOT COMMAND : checkmodsneedupdate " + f": {ctx.author}")
-        if "Checking started" in response :
-            await ctx.send(f"PzPy : modUpdater.py : Mods Update Check: Started")
+        author = str(ctx.author)
+        self.bot.log.info("modUpdater.py : BOT COMMAND : checkmodsneedupdate " + f": {author}")
+        if modules.usersData.UsersData.isAdmin(self, self.dataPath, author):
+            response = await rcon(
+                "checkModsNeedUpdate",
+                host=os.getenv("RCON_HOST"),
+                port=os.getenv("RCON_PORT"),
+                passwd=os.getenv("RCON_PASSWORD"),
+            )
+            self.bot.log.info("modUpdater.py : BOT COMMAND : checkmodsneedupdate " + f": {ctx.author}")
+            if "Checking started" in response :
+                await ctx.send(f"PzPy : modUpdater.py : Mods Update Check: Started")
     
     # Query the server automaticaly every 5 mins to see if their is a mod update 
     @tasks.loop(minutes=5)

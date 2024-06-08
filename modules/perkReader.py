@@ -192,6 +192,8 @@ class perkReader(commands.Cog):
                     return modules.embed.perk(
                         timestamp, user.name, log_char_string, avatar, perk, level
                     )
+                else:
+                    self.bot.log.debug(f"perkReader.py : IGNORED : Level Changed : {user.name} {perk} changed to {level}") # debug ignored perk change
                         
                         
      # Skill Recovery Journal Support

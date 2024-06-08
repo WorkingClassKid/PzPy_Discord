@@ -24,7 +24,7 @@ You are welcome to [log](https://github.com/WorkingClassKid/PzPy_Discord/issues)
 - Bot presence shows number of players currently online with plural support
 - View and change server options
 - [Skills Recovery Journal mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2503622437) support
-  - Ignore sending level changes to discord channel when a user is reading a SRJ.
+  - Prevent sending level changes to discord channel when a user is reading a SRJ.
 - Option to hide / display the timestamp
 - Option to show the in-game chat with discord embed or not
 - Compatible with server connected to Steam (not compatible with GOG (and will never be...))
@@ -62,9 +62,6 @@ To install dependencies:
 ## Configuration
 Configuration can be specified with an environment file named `.env`.
 Sample configuration is provided in a file named `sample.env`. You can copy this file, name it `.env` and change the values to suit your environment.
-
-#### Add yourself as an admin
-- Edit the data/bot.admins file and add your discord username (in lowercase) in the file
 
 ## Running the bot
 This bot works by monitoring the log files produced by the game, so must be run on the same machine as the server/host
