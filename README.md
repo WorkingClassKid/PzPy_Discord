@@ -1,3 +1,7 @@
+# B41 ONLY. b42 support will be available soon™
+# B41 ONLY. b42 support will be available soon™
+# B41 ONLY. b42 support will be available soon™
+
 # PzPy
 
 A discord bot for Project Zomboid. 
@@ -55,6 +59,7 @@ No Category:
 - Project Zomboid server / PzPy need to run on the same Linux dedicated server/vps
   - Tested on a dedicated server with Ubuntu
   - not tested on Windows and I will not support Windows. Make your own fork....
+- Log Extender mod (https://steamcommunity.com/sharedfiles/filedetails/?id=1844524972)  
 
 To install dependencies:
 `pip install -r requirements.txt`
